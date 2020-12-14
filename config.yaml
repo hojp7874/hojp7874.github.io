@@ -1,7 +1,7 @@
 baseURL: https://hojp7874.github.io
 
-languageCode: en-us
-title: "John's Blog"
+languageCode: ko-kr
+title: "홍진표의 블로그"
 theme: "toha"
 
 # Manage languages
