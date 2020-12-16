@@ -2,7 +2,7 @@
 section:
   name: 프로젝트
   id: projects
-  enable: true
+  enable: false
   weight: 4
   showOnNavbar: true
   # Can optionally hide the title in sections

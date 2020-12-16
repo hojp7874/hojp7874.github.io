@@ -24,17 +24,31 @@ draft: false
 ## 순서
 
 1. __아직 확인되지 않은 거리는 무한으로 설정한다.__
-![](index.assets/image1.png)
+
+  ![](index.assets/image1.png)
+
+  
 
 2. __이웃 노드를 방문하고 거리를 계산한다.__
-![](index.assets/image2.png)
+
+  ![](index.assets/image2.png)
+
+  
 
 3. __거리가 가장 짧은 노드에 방문하고 경로를 확정한다. (A - B)__
-![](index.assets/image3.png)
+
+  ![](index.assets/image3.png)
+
+  
 
 4. __거리가 다음으로 짧은 노드에 방문하고 경로를 확정한다. (A - D)__
+
    __확정되지 않은 경로 중 더 짦은 경로를 발견하면 값을 갱신한다. (A - D - C)__
-![](index.assets/image4.png)
+
+   ![](index.assets/image4.png)
+
+   
 
 5. __목표 노드에 도달할 때 까지 반복한다.__
-![](index.assets/image.png)
+
+  ![](index.assets/image.png)
