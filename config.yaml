@@ -6,17 +6,17 @@ theme: "toha"
 
 # Manage languages
 # For any more details, you can check the official documentation: https://gohugo.io/content-management/multilingual/
-defaultContentLanguage: kr
+defaultContentLanguage: en
 languages:
-  kr:
-    languageName: 한글
-    weight: 1
+  # kr:
+  #   languageName: 한글
+  #   weight: 1
   en:
     languageName: English
     weight: 2
-  bn:
-    languageName: বাংলা
-    weight: 3
+  # bn:
+  #   languageName: বাংলা
+  #   weight: 3
 
 # Force a locale to be use, really useful to develop the application ! Should be commented in production, the "weight" should rocks.
 # DefaultContentLanguage: bn
