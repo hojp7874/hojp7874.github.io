@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>알고리즘 on 홍진표의 블로그</title><link>https://hojp7874.github.io/posts/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/</link><description>Recent content in 알고리즘 on 홍진표의 블로그</description><generator>Hugo -- gohugo.io</generator><language>ko-kr</language><lastBuildDate>Tue, 15 Dec 2020 17:26:17 +0900</lastBuildDate><atom:link href="https://hojp7874.github.io/posts/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/index.xml" rel="self" type="application/rss+xml"/><item><title>LCS</title><link>https://hojp7874.github.io/posts/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/lcs/</link><pubDate>Tue, 15 Dec 2020 17:26:17 +0900</pubDate><guid>https://hojp7874.github.io/posts/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/lcs/</guid><description>LCS(Longest Common Subsequence) LCS란, 두 개의 문자열 중에서 가장 긴 공통 수열을 찾는 알고리즘이다.
+여기서 수열이란, 순서가 있는 문자열을 말한다. 예를들어,
+str1 = &amp;lsquo;abc&amp;rsquo;에서 모든 수열을 나열하면,
+&amp;lsquo;a&amp;rsquo;
+&amp;lsquo;ab&amp;rsquo;
+&amp;lsquo;abc&amp;rsquo;
+&amp;lsquo;ac&amp;rsquo; &amp;lt;- 중간의 문자는 건너뛸 수 있다.
+&amp;lsquo;b&amp;rsquo;
+&amp;lsquo;bc&amp;rsquo;
+&amp;lsquo;c&amp;rsquo;
+를 말한다.
+어떤 문제에서 사용할까? https://www.acmicpc.net/problem/1958
+https://www.acmicpc.net/problem/5582
+https://www.acmicpc.net/problem/9251
+https://www.acmicpc.net/problem/9252
+알고리즘 아래의 경우를 생각하며 알고리즘이 어떻게 진행되는지 알아보자.
+str1 = &amp;lsquo;abcd&amp;rsquo; str2 = &amp;lsquo;acbd&amp;rsquo; LCS(str1, str2)는 str1와 str2의 LCS이다.
+만약 두 문자열의 마지막 문자가 같다면 해당 문자는 LCS에 포함시키는 것이 옳다.</description></item><item><title>다익스트라</title><link>https://hojp7874.github.io/posts/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC/</link><pubDate>Tue, 15 Dec 2020 15:15:23 +0900</pubDate><guid>https://hojp7874.github.io/posts/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC/</guid><description>다익스트라 알고리즘 시작 정점에서 거리가 최소인 정점부터 선택해 나가면서 최단 경로를 구하는 방식( Greedy) 최소 신장 트리를 구하는 프림 알고리즘과 유사 시작 정점(r)에서 끝 정점(t)까지의 최단 경로에 정점 x가 존재한다면, 최단경로는 r에서 x까지의 최단 경로와 x에서t까지의 최단 경로로 구성된다는 것이 핵심 음의 가중치가 있는 경우 사용할 수 없다. 순서 아직 확인되지 않은 거리는 무한으로 설정한다. 이웃 노드를 방문하고 거리를 계산한다. 거리가 가장 짧은 노드에 방문하고 경로를 확정한다.</description></item></channel></rss>
