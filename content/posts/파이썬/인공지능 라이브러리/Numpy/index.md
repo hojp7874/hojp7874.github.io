@@ -75,22 +75,30 @@ import numpy as np
      
      x = x[:, None]
      print(a + x)
+     
+     ->
+     [[1 2 3]
+      [5 6 7]
+      [7 8 9]]
      ```
-
+  
   2. __M * N, 1 * N__
-
-     ```python
-   y = np.array([0, 1, -1])
-     
-   print(a * y)
+  
+      ```python
+     y = np.array([0, 1, -1])
+   
+     print(a * y)
+   
+     ->
+     [[ 0  2 -3]
+      [ 0  5 -6]
+      [ 0  8 -9]]
      ```
-
-     
-
-  3. __M * 1, 1 * N__
-
-     ```python
-   # 열벡터
+  
+      3. __M * 1, 1 * N__
+  
+      ```python
+     # 열벡터
      t = np.array([1, 2, 3])
      t = t[:, None]
      
@@ -98,9 +106,12 @@ import numpy as np
      u = np.array([2, 0, -2])
      
      print(t + u)
-     ```
-  
      
+     ->
+     [[ 3  1 -1]
+      [ 4  2  0]
+      [ 5  3  1]]
+      ```
 
 ## 3. Numpy로 선형대수 사용하기
 
