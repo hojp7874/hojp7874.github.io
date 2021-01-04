@@ -18,6 +18,14 @@ draft: false
 
 ## 1. 시작하기
 
+터미널에서:
+
+```shell
+pip install numpy
+```
+
+shell 또는 python 파일에서:
+
 ```python
 import numpy as np
 ```

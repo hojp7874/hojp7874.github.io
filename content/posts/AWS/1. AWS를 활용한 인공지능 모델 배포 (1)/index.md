@@ -1,12 +1,12 @@
 ---
-title: "1. AWS를 활용한 인공지능 모델 배포"
+title: "1. AWS를 활용한 인공지능 모델 배포 (1)"
 date: 2020-12-22T14:23:24+09:00
 hero: 
 description:
 menu:
   sidebar:
-    name: 1. AWS를 활용한 인공지능 모델 배포
-    identifier: 1. AWS를 활용한 인공지능 모델 배포
+    name: 1. AWS를 활용한 인공지능 모델 배포 (1)
+    identifier: 1. AWS를 활용한 인공지능 모델 배포 (1)
     parent: AWS
     weight: 10
 draft: false
@@ -154,14 +154,76 @@ mac 쓰는 사람은 그냥 진행하면 되는데..
 ssh: connect to host ec2-13-209-89-56.ap-northeast-2.compute.amazonaws.com port 22: Connection timed out
 ```
 
-에러가 뜬다...
+에러가 뜬다.
+
+인스턴스를 새로 만들어도 같은 오류가 반복됩니다.
 
 ...
 
 ...
 
-...
+AWS에서 방화벽이 하나 더 생겼던지, 서버 통신상태가 좋지 않았던지 등의 문제가 있었나봅니다.
 
-흠.. 약 3시간 동안 헤맨 결과... AWS에서 방화벽이 하나 더 생겼던지, 서버 통신상태가 좋지 않던지...
+시간이 흐른 뒤 새로운 다시 연결해보니 진전이 있습니다.
 
-나중에 해결해야겠다.
+```shell
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ECDSA key sent by the remote host is
+SHA256:kFc7OLRofTQSdo4dslsvetzDcO6WTLytpahC9SVmw5A.
+Please contact your system administrator.
+Add correct host key in C:\\Users\\hojp7/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in C:\\Users\\hojp7/.ssh/known_hosts:1
+ECDSA host key for ec2-3-35-82-162.ap-northeast-2.compute.amazonaws.com has changed and you have requested strict checking.
+Host key verification failed.
+```
+
+에러의 형태가 바뀌었습니다.
+
+연결 호스트 신원이 변경되었다고 하는데...
+
+퍼블릭 IP (탄력적 IP)를 새로 만들었기 때문에 발생 것 같네요.
+
+SSH는 처음 접속할 때 접속한 서버의 IP(에 해당되는 퍼블릭 key와 프라이빗 key)를 기억하는데, 퍼블릭 IP가 바뀌어서 키가 안맞는 상태입니다.
+
+새로 키를 만들어줘야겠어요.
+
+```shell
+ssh-keygen -R [ IP or DomainName]
+```
+
+이 명령어는 IP에 해당되는  퍼블릭 key와 프라이빗 key 쌍을 만들어주는 명령어입니다.
+
+이 후 다시 인스턴스 연결을 시도하면,
+
+```shell
+Are you sure you want to continue connecting (yes/no)?
+```
+
+__yes__ 를 입력하면 접속됩니다.
+
+접속이 되는걸 확인하면, 이제 vscode에서 접속할 수 있도록 해줍니다. 왜냐하면 cmd는 불편하니까요!
+
+![image-20201230023727854](index.assets/image-20201230023727854.png)
+
+일단 extension을 두 개 깔아줍니다. __Remote - SSH__ 와 __Remote Development__ 입니다.
+
+설치하면 화면 좌측 하단에 연두색 버튼이 보입니다. 눌러줍니다.
+
+![image-20201230023930097](index.assets/image-20201230023930097.png)
+
+__Remote-SSH: Connect Current Window to Host...__ 를 선택하고, 아래와 같이 입력합니다.
+
+```shell
+ssh -i "~\...\kdt.pem" ubuntu@{퍼블릭 IP}
+
+# 여기서 '~'는 'C\User\사용자' 입니다.
+```
+
+이 후 __connect__ , __Linux__ 를 차례로 클릭하여 터미널을 열었을 때 아래의 화면이 보이면 최종적으로 완료 된 것입니다.
+
+![image-20201230024630904](index.assets/image-20201230024630904.png)
