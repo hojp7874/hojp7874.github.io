@@ -32,11 +32,35 @@ draft: false
 
 ![image-20210104193846894](index.assets/image-20210104193846894.png)
 
+
+
 #### 누적분포함수 (CDF. Cumulative Distribution Function)
 
 누적분포함수란, 주어진 확률변수가 특정 값보다 작거나 같은 확률을 나타내는 함수입니다.
 
 ![누적 분포 함수 - MATLAB cdf - MathWorks 한국](index.assets/plotstandardnormaldistributioncdfexample_01_ko_KR.png)
+
+### 확률변수의 성질
+
+> 아래의 성질들을 이용해서 확률변수 값을 계산하게 된다.
+
+__결합확률분포함수__
+
+![周辺分布 - Wikiwand](index.assets/600px-MultivariateNormal.png)
+
+- 덧셈법칙
+
+  ![image-20210109204829506](index.assets/image-20210109204829506.png)
+
+- 곱셈법칙
+
+  ![image-20210109205318069](index.assets/image-20210109205318069.png)
+
+- 베이즈확률
+
+  ![image-20210109205636055](index.assets/image-20210109205636055.png)
+
+
 
 ## 확률변수의 함수
 
