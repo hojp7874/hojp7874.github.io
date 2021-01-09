@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>다양한 그래프, 간단한 수학, R로 배우는 머신러닝 on 홍진표의 블로그</title><link>https://hojp7874.github.io/posts/%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5/%EC%B1%85/%EB%8B%A4%EC%96%91%ED%95%9C-%EA%B7%B8%EB%9E%98%ED%94%84-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%88%98%ED%95%99-r%EB%A1%9C-%EB%B0%B0%EC%9A%B0%EB%8A%94-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</link><description>Recent content in 다양한 그래프, 간단한 수학, R로 배우는 머신러닝 on 홍진표의 블로그</description><generator>Hugo -- gohugo.io</generator><language>ko-kr</language><lastBuildDate>Sat, 09 Jan 2021 18:52:15 +0900</lastBuildDate><atom:link href="https://hojp7874.github.io/posts/%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5/%EC%B1%85/%EB%8B%A4%EC%96%91%ED%95%9C-%EA%B7%B8%EB%9E%98%ED%94%84-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%88%98%ED%95%99-r%EB%A1%9C-%EB%B0%B0%EC%9A%B0%EB%8A%94-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/index.xml" rel="self" type="application/rss+xml"/><item><title>1. Intro</title><link>https://hojp7874.github.io/posts/%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5/%EC%B1%85/%EB%8B%A4%EC%96%91%ED%95%9C-%EA%B7%B8%EB%9E%98%ED%94%84-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%88%98%ED%95%99-r%EB%A1%9C-%EB%B0%B0%EC%9A%B0%EB%8A%94-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/1.-intro/</link><pubDate>Sat, 09 Jan 2021 18:53:31 +0900</pubDate><guid>https://hojp7874.github.io/posts/%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5/%EC%B1%85/%EB%8B%A4%EC%96%91%ED%95%9C-%EA%B7%B8%EB%9E%98%ED%94%84-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%88%98%ED%95%99-r%EB%A1%9C-%EB%B0%B0%EC%9A%B0%EB%8A%94-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/1.-intro/</guid><description>머신러닝은 다음과 같이 분류된다.
+회귀
+y = f(x)를 만족하는 함수 f를 추정하는 학습방법. (y는 실수, x 는 벡터)
+학습 데이터는 (x, y)를 이용함.
+분류
+기본적인 틀은 회귀와 같음.
+y가 클러스터를 나타내는 레이블(유한 이산값)이라는 점이 다름.
+클러스터링
+입력 표본 x1, x2, &amp;hellip; , xn 에 대해 적절한 클러스터 레이블을 부여하는 문제.
+각 클러스터에 속한 표본이 가능한 균일한 성질을 갖도록 학습시킴. &amp;lt;- 표본의 유사성 측정 방법이 중요</description></item></channel></rss>
