@@ -1,0 +1,210 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><title>Numpy</title><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta name=description content="This is meta description"><meta name=author content="Themefisher"><meta name=generator content="Hugo 0.77.0"><meta property="og:image" content="https://hojp7874.netlify.com/images/blog/default.jpg"><meta name=twitter:image content="https://hojp7874.netlify.com/images/blog/default.jpg"><meta property="og:title" content="Numpy"><meta property="og:description" content="0. Numpy란?  Vector와 Matrics를 다루기에 특화된 파이썬 라이브러리
+ 1. 시작하기 터미널에서:
+pip install numpy shell 또는 python 파일에서:
+import numpy as np 2. Numpy로 연산하기   vector와 scalar 사이의 연산이 가능하다."><meta property="og:type" content="article"><meta property="og:url" content="https://hojp7874.netlify.com/blog/numpy/"><meta property="article:published_time" content="2020-12-18T21:47:04+09:00"><meta property="article:modified_time" content="2020-12-18T21:47:04+09:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="Numpy"><meta name=twitter:description content="0. Numpy란?  Vector와 Matrics를 다루기에 특화된 파이썬 라이브러리
+ 1. 시작하기 터미널에서:
+pip install numpy shell 또는 python 파일에서:
+import numpy as np 2. Numpy로 연산하기   vector와 scalar 사이의 연산이 가능하다."><link rel=stylesheet href=/plugins/bootstrap/css/bootstrap.min.css media=screen><link rel=stylesheet href=/plugins/ionicons/css/ionicons.min.css><link rel=stylesheet href=/plugins/magnific-popup/magnific-popup.min.css><link rel=stylesheet href=/plugins/slick/slick.css><link rel=stylesheet href=/scss/bundled.min.css media=screen><link rel="shortcut icon" href=/images/favicon.png type=image/x-icon><link rel=icon href=/images/favicon.png type=image/x-icon></head><body><div class=preloader></div><header class=navigation><div class=container-fluid><div class=row><div class=col-md-12><nav class=navbar><div class=navbar-header><button type=button class="navbar-toggle collapsed" data-toggle=collapse data-target=#navigation>
+<span class=icon-bar></span><span class=icon-bar></span><span class=icon-bar></span></button>
+<a class=navbar-brand href=/><img src=/images/logo.png alt="Airspace | Creative Agency Hugo Template" width=150px class=img-responsive></a></div><div class="collapse navbar-collapse" id=navigation><ul class="nav navbar-nav navbar-right"><li><a href=/>Home</a></li><li><a href=/about>About</a></li><li><a href=/project>Project</a></li><li><a href=/blog>Blog</a></li><li class=dropdown><a href=# class=dropdown-toggle data-toggle=dropdown role=button aria-haspopup=true aria-expanded=false>More <span class=ion-ios-arrow-down></span></a><ul class=dropdown-menu><li><a href=/faq>FAQ</a></li><li><a href=/pricing>Pricing</a></li><li><a href=/service>Service</a></li></ul></li><li><a href=/contact>Contact</a></li><li><select id=select-language onchange="location=this.value;">
+<option id=en value=/blog/numpy/ selected>English</option></select></li></ul></div></nav></div></div></div></header><section class="page-title bg-2" style=background-image:url(/images/laptop-coffee.jpg)><div class=container><div class=row><div class=col-md-12><div class=block><h1>Numpy</h1><p></p></div></div></div></div></section><section class=page-wrapper><div class=container><div class=row><div class=col-md-8><div class="post post-single"><h2 class=post-title>Numpy</h2><div class=post-meta><ul><li><i class=ion-calendar></i>December 18, 2020</li><li><i class=ion-android-people></i>Posted by
+<a class=text-primary href=/author/jinpyo-hong>Jinpyo Hong</a></li><li><i class=ion-pricetags></i><a href=/tags/none>None</a></li></ul></div><div class=post-thumb><img class=img-responsive src=/images/blog/default.jpg alt=Numpy></div><div class="post-content post-excerpt"><h2 id=0-numpy란>0. Numpy란?</h2><blockquote><p>Vector와 Matrics를 다루기에 특화된 파이썬 라이브러리</p></blockquote><h2 id=1-시작하기>1. 시작하기</h2><p>터미널에서:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>pip install numpy
+</code></pre></div><p>shell 또는 python 파일에서:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> numpy <span style=color:#f92672>as</span> np
+</code></pre></div><h2 id=2-numpy로-연산하기>2. Numpy로 연산하기</h2><ul><li><p>vector와 scalar 사이의 연산이 가능하다.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>A <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>])
+x <span style=color:#f92672>=</span> <span style=color:#ae81ff>5</span>
+<span style=color:#66d9ef>print</span>(A <span style=color:#f92672>*</span> x)
+  
+<span style=color:#f92672>-&gt;</span> [ <span style=color:#ae81ff>5</span> <span style=color:#ae81ff>10</span> <span style=color:#ae81ff>15</span>]
+</code></pre></div></li><li><p>Indexing이 가능하다.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>W <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>4</span>], [<span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>6</span>, <span style=color:#ae81ff>7</span>, <span style=color:#ae81ff>8</span>], [<span style=color:#ae81ff>9</span>, <span style=color:#ae81ff>10</span>, <span style=color:#ae81ff>11</span>, <span style=color:#ae81ff>12</span>]])
+  
+W[<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>]
+  
+<span style=color:#f92672>-&gt;</span> <span style=color:#ae81ff>12</span>
+</code></pre></div></li><li><p>Slicing이 가능하다.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>W[:<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>1</span>:<span style=color:#ae81ff>3</span>]
+<span style=color:#f92672>-&gt;</span>
+  
+array([[<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>],
+       [<span style=color:#ae81ff>6</span>, <span style=color:#ae81ff>7</span>]])
+  
+  
+W[<span style=color:#ae81ff>1</span>:]
+  
+<span style=color:#f92672>-&gt;</span> 
+array([[ <span style=color:#ae81ff>5</span>,  <span style=color:#ae81ff>6</span>,  <span style=color:#ae81ff>7</span>,  <span style=color:#ae81ff>8</span>],
+       [ <span style=color:#ae81ff>9</span>, <span style=color:#ae81ff>10</span>, <span style=color:#ae81ff>11</span>, <span style=color:#ae81ff>12</span>]])
+</code></pre></div></li><li><p>Broadcasting이 가능하다.</p><p>실제로는 연산이 불가능할지라도, Numpy는 스스로 피연산자의 형태를 변형하여 연산을 수행한다.</p><ol><li><p><strong>M * N, M * 1</strong></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>a <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>], [<span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>6</span>], [<span style=color:#ae81ff>7</span>, <span style=color:#ae81ff>8</span>, <span style=color:#ae81ff>9</span>]])
+x <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>])
+     
+x <span style=color:#f92672>=</span> x[:, None]
+<span style=color:#66d9ef>print</span>(a <span style=color:#f92672>+</span> x)
+     
+<span style=color:#f92672>-&gt;</span>
+[[<span style=color:#ae81ff>1</span> <span style=color:#ae81ff>2</span> <span style=color:#ae81ff>3</span>]
+ [<span style=color:#ae81ff>5</span> <span style=color:#ae81ff>6</span> <span style=color:#ae81ff>7</span>]
+ [<span style=color:#ae81ff>7</span> <span style=color:#ae81ff>8</span> <span style=color:#ae81ff>9</span>]]
+</code></pre></div></li><li><p><strong>M * N, 1 * N</strong></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>y <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>])
+  
+<span style=color:#66d9ef>print</span>(a <span style=color:#f92672>*</span> y)
+  
+<span style=color:#f92672>-&gt;</span>
+[[ <span style=color:#ae81ff>0</span>  <span style=color:#ae81ff>2</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>3</span>]
+[ <span style=color:#ae81ff>0</span>  <span style=color:#ae81ff>5</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>6</span>]
+[ <span style=color:#ae81ff>0</span>  <span style=color:#ae81ff>8</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>9</span>]]
+</code></pre></div><ol start=3><li><strong>M * 1, 1 * N</strong></li></ol><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># 열벡터</span>
+t <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>])
+t <span style=color:#f92672>=</span> t[:, None]
+    
+<span style=color:#75715e>#행벡터</span>
+u <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>0</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>])
+    
+<span style=color:#66d9ef>print</span>(t <span style=color:#f92672>+</span> u)
+    
+<span style=color:#f92672>-&gt;</span>
+[[ <span style=color:#ae81ff>3</span>  <span style=color:#ae81ff>1</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>]
+[ <span style=color:#ae81ff>4</span>  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>0</span>]
+[ <span style=color:#ae81ff>5</span>  <span style=color:#ae81ff>3</span>  <span style=color:#ae81ff>1</span>]]
+</code></pre></div></li></ol></li></ul><h2 id=3-numpy로-선형대수-사용하기>3. Numpy로 선형대수 사용하기</h2><h3 id=영벡터행렬>영벡터(행렬)</h3><ul><li>원소가 모두 0인 벡터(행렬)</li><li><code>np.zeros(dim)</code>을 통해 생성, dim은 값, 혹은 튜플 (,)</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>np<span style=color:#f92672>.</span>zeros(<span style=color:#ae81ff>2</span>)
+
+<span style=color:#f92672>-&gt;</span> array([<span style=color:#ae81ff>0.</span>, <span style=color:#ae81ff>0.</span>])
+</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>np<span style=color:#f92672>.</span>zeros((<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>3</span>))
+
+<span style=color:#f92672>-&gt;</span>
+array([[[<span style=color:#ae81ff>0.</span>, <span style=color:#ae81ff>0.</span>, <span style=color:#ae81ff>0.</span>],
+        [<span style=color:#ae81ff>0.</span>, <span style=color:#ae81ff>0.</span>, <span style=color:#ae81ff>0.</span>],
+        [<span style=color:#ae81ff>0.</span>, <span style=color:#ae81ff>0.</span>, <span style=color:#ae81ff>0.</span>]],
+
+       [[<span style=color:#ae81ff>0.</span>, <span style=color:#ae81ff>0.</span>, <span style=color:#ae81ff>0.</span>],
+        [<span style=color:#ae81ff>0.</span>, <span style=color:#ae81ff>0.</span>, <span style=color:#ae81ff>0.</span>],
+        [<span style=color:#ae81ff>0.</span>, <span style=color:#ae81ff>0.</span>, <span style=color:#ae81ff>0.</span>]],
+
+       [[<span style=color:#ae81ff>0.</span>, <span style=color:#ae81ff>0.</span>, <span style=color:#ae81ff>0.</span>],
+        [<span style=color:#ae81ff>0.</span>, <span style=color:#ae81ff>0.</span>, <span style=color:#ae81ff>0.</span>],
+        [<span style=color:#ae81ff>0.</span>, <span style=color:#ae81ff>0.</span>, <span style=color:#ae81ff>0.</span>]]])
+</code></pre></div><h3 id=일벡터행렬>일벡터(행렬)</h3><ul><li>원소가 모두 1인 벡터(행렬)</li><li><code>np.ones(dim)</code>을 통해 생성, dim은 값, 튜플(,)</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>np<span style=color:#f92672>.</span>ones(<span style=color:#ae81ff>2</span>)
+
+<span style=color:#f92672>-&gt;</span> array([<span style=color:#ae81ff>1.</span>, <span style=color:#ae81ff>1.</span>])
+</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>np<span style=color:#f92672>.</span>ones((<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>3</span>))
+
+<span style=color:#f92672>-&gt;</span>
+array([[<span style=color:#ae81ff>1.</span>, <span style=color:#ae81ff>1.</span>, <span style=color:#ae81ff>1.</span>],
+       [<span style=color:#ae81ff>1.</span>, <span style=color:#ae81ff>1.</span>, <span style=color:#ae81ff>1.</span>],
+       [<span style=color:#ae81ff>1.</span>, <span style=color:#ae81ff>1.</span>, <span style=color:#ae81ff>1.</span>]])
+</code></pre></div><h3 id=대각행렬>대각행렬</h3><ul><li>Main Diagonal을 제외한 성분이 0일 행렬</li><li><code>np.diag((main_diagnals))</code>을 통해 생성할 수 있음.</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>np<span style=color:#f92672>.</span>diag((<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>4</span>))
+
+<span style=color:#f92672>-&gt;</span>
+array([[<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>0</span>],
+       [<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>4</span>]])
+</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>np<span style=color:#f92672>.</span>diag((<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>5</span>))
+
+<span style=color:#f92672>-&gt;</span>
+array([[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>],
+       [<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>0</span>],
+       [<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>5</span>]])
+</code></pre></div><h3 id=항등행렬>항등행렬</h3><ul><li>main diagonal == 1인 diagonal matrix(대각행렬)</li><li><code>np.eye(n, (dtype=int, uint, float, complex, ...))</code>을 통해 생성</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>np<span style=color:#f92672>.</span>eye(<span style=color:#ae81ff>2</span>)<span style=color:#f92672>.</span>dtype
+
+<span style=color:#f92672>-&gt;</span> dtype(<span style=color:#e6db74>&#39;float64&#39;</span>)
+</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>np<span style=color:#f92672>.</span>eye(<span style=color:#ae81ff>3</span>, dtype<span style=color:#f92672>=</span>int)
+
+<span style=color:#f92672>-&gt;</span>
+array([[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>],
+       [<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>],
+       [<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>]])
+</code></pre></div><h3 id=행렬곱>행렬곱</h3><ul><li>행렬간에 정의되는 곱 연산(dot product)</li><li><code>np.dot()</code> 또는 <code>@</code>을 사용</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>mat_1 <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>4</span>], [<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>]])
+mat_2 <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([[<span style=color:#ae81ff>7</span>, <span style=color:#ae81ff>9</span>], [<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>6</span>]])
+mat_1<span style=color:#f92672>.</span>dot(mat_2)
+
+<span style=color:#f92672>-&gt;</span>
+array([[ <span style=color:#ae81ff>7</span>, <span style=color:#ae81ff>33</span>],
+       [<span style=color:#ae81ff>14</span>, <span style=color:#ae81ff>36</span>]])
+</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>mat_1 <span style=color:#960050;background-color:#1e0010>@</span> mat_2
+
+<span style=color:#f92672>-&gt;</span>
+array([[ <span style=color:#ae81ff>7</span>, <span style=color:#ae81ff>33</span>],
+       [<span style=color:#ae81ff>14</span>, <span style=color:#ae81ff>36</span>]])
+</code></pre></div><h3 id=트레이스>트레이스</h3><ul><li>Main diagonal의 합</li><li>np.trace()를 사용</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>arr <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>], [<span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>6</span>], [<span style=color:#ae81ff>7</span>, <span style=color:#ae81ff>8</span>, <span style=color:#ae81ff>9</span>]])
+arr
+
+<span style=color:#f92672>-&gt;</span>
+array([[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>],
+       [<span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>6</span>],
+       [<span style=color:#ae81ff>7</span>, <span style=color:#ae81ff>8</span>, <span style=color:#ae81ff>9</span>]])
+</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>np<span style=color:#f92672>.</span>trace(arr)
+
+<span style=color:#f92672>-&gt;</span> <span style=color:#ae81ff>15</span>
+</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>arr<span style=color:#f92672>.</span>trace()
+
+<span style=color:#f92672>-&gt;</span> <span style=color:#ae81ff>15</span>
+</code></pre></div><h3 id=행렬식>행렬식</h3><ul><li>행렬을 대표하는 값들 중 하나</li><li>선형변환 과정에서 Vector의 Scaling 척도</li><li><code>np.linalg.det()</code>으로 계산</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>arr_2 <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([[<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>], [<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>6</span>]])
+arr_2
+
+<span style=color:#f92672>-&gt;</span>
+array([[<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>],
+       [<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>6</span>]])
+</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>np<span style=color:#f92672>.</span>linalg<span style=color:#f92672>.</span>det(arr_2)
+
+<span style=color:#f92672>-&gt;</span> <span style=color:#ae81ff>9.000000000000002</span>
+</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>arr_3 <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>7</span>], [<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>8</span>], [<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>6</span>, <span style=color:#ae81ff>9</span>]])
+arr_3
+
+<span style=color:#f92672>-&gt;</span>
+array([[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>7</span>],
+       [<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>8</span>],
+       [<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>6</span>, <span style=color:#ae81ff>9</span>]])
+</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>np<span style=color:#f92672>.</span>linalg<span style=color:#f92672>.</span>det(arr_3)
+
+<span style=color:#f92672>-&gt;</span> <span style=color:#ae81ff>0.0</span>
+</code></pre></div><h3 id=역행렬>역행렬</h3><ul><li>행렬 A에 대해 AB = BA = I을 만족하는 행렬 B = A^-1</li><li><code>np.linalg.inv()</code>로 계산</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>mat <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>4</span>], [<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>]])
+mat
+
+<span style=color:#f92672>-&gt;</span>
+array([[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>4</span>],
+       [<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>]])
+</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>mat_inv <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>linalg<span style=color:#f92672>.</span>inv(mat)
+mat_inv
+
+<span style=color:#f92672>-&gt;</span>
+array([[<span style=color:#f92672>-</span><span style=color:#ae81ff>0.6</span>,  <span style=color:#ae81ff>0.8</span>],
+       [ <span style=color:#ae81ff>0.4</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>0.2</span>]])
+</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>mat <span style=color:#960050;background-color:#1e0010>@</span> mat_inv
+
+<span style=color:#f92672>-&gt;</span>
+array([[ <span style=color:#ae81ff>1.00000000e+00</span>,  <span style=color:#ae81ff>0.00000000e+00</span>],
+       [<span style=color:#f92672>-</span><span style=color:#ae81ff>1.11022302e-16</span>,  <span style=color:#ae81ff>1.00000000e+00</span>]])
+</code></pre></div><h3 id=고유값과-고유벡터>고유값과 고유벡터</h3><ul><li>정방행렬(nxn) A에 대해 𝐴𝑥=𝜆𝑥Ax=λx를 만족하는 상수 𝜆λ와 x를 각각 고유값과 고유벡터라 한다.</li><li><code>np.linalg.eig()</code>로 계산</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>mat <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([[<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>0</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>], [<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>], [<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>]])
+mat
+
+<span style=color:#f92672>-&gt;</span>
+array([[ <span style=color:#ae81ff>2</span>,  <span style=color:#ae81ff>0</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>],
+       [ <span style=color:#ae81ff>1</span>,  <span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>],
+       [ <span style=color:#ae81ff>0</span>,  <span style=color:#ae81ff>0</span>,  <span style=color:#ae81ff>1</span>]])
+</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>np<span style=color:#f92672>.</span>linalg<span style=color:#f92672>.</span>eig(mat)
+
+<span style=color:#f92672>-&gt;</span>
+(array([<span style=color:#ae81ff>1.</span>, <span style=color:#ae81ff>2.</span>, <span style=color:#ae81ff>1.</span>]),
+ array([[<span style=color:#ae81ff>0.</span>        , <span style=color:#ae81ff>0.70710678</span>, <span style=color:#ae81ff>0.89442719</span>],
+        [<span style=color:#ae81ff>1.</span>        , <span style=color:#ae81ff>0.70710678</span>, <span style=color:#ae81ff>0.</span>        ],
+        [<span style=color:#ae81ff>0.</span>        , <span style=color:#ae81ff>0.</span>        , <span style=color:#ae81ff>0.4472136</span> ]]))
+</code></pre></div><h4 id=validation>Validation</h4><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>eig_val, eig_vec <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>linalg<span style=color:#f92672>.</span>eig(mat)
+eig_val
+
+<span style=color:#f92672>-&gt;</span>
+array([<span style=color:#ae81ff>1.</span>, <span style=color:#ae81ff>2.</span>, <span style=color:#ae81ff>1.</span>])
+
+
+eig_vec
+
+<span style=color:#f92672>-&gt;</span>
+array([[<span style=color:#ae81ff>0.</span>        , <span style=color:#ae81ff>0.70710678</span>, <span style=color:#ae81ff>0.89442719</span>],
+       [<span style=color:#ae81ff>1.</span>        , <span style=color:#ae81ff>0.70710678</span>, <span style=color:#ae81ff>0.</span>        ],
+       [<span style=color:#ae81ff>0.</span>        , <span style=color:#ae81ff>0.</span>        , <span style=color:#ae81ff>0.4472136</span> ]])
+</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>mat <span style=color:#960050;background-color:#1e0010>@</span> eig_vec[:, <span style=color:#ae81ff>0</span>]
+
+<span style=color:#f92672>-&gt;</span> array([<span style=color:#ae81ff>0.</span>, <span style=color:#ae81ff>1.</span>, <span style=color:#ae81ff>0.</span>])
+</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>eig_val[<span style=color:#ae81ff>0</span>] <span style=color:#f92672>*</span> eig_vec[:, <span style=color:#ae81ff>0</span>]
+
+<span style=color:#f92672>-&gt;</span> array([<span style=color:#ae81ff>0.</span>, <span style=color:#ae81ff>1.</span>, <span style=color:#ae81ff>0.</span>])
+</code></pre></div></div><div class=post-comments></div></div></div><div class=col-md-4><aside class=sidebar><div class="widget widget-latest-post"><h4 class=widget-title>Latest Posts</h4><div class=media><a class=pull-left href=/blog/%EC%84%A0%ED%98%95%ED%9A%8C%EA%B7%80/><img class=media-object src=/images/blog/default.jpg alt=선형회귀></a><div class=media-body><h4 class=media-heading><a href=/blog/%EC%84%A0%ED%98%95%ED%9A%8C%EA%B7%80/>선형회귀</a></h4><p>선형 모델은 빠르고, 좋은 성능을 가진다. 딥러닝을 이해하는 데에도 도움이 됨.
+선형 기 …</p></div></div><div class=media><a class=pull-left href=/blog/googlenet/><img class=media-object src=/images/blog/default.jpg alt=GoogleNet></a><div class=media-body><h4 class=media-heading><a href=/blog/googlenet/>GoogleNet</a></h4><p>​
+Google Net의 특징 Inception Module Auxiliary …</p></div></div><div class=media><a class=pull-left href=/blog/cross-validation/><img class=media-object src=/images/blog/default.jpg alt="Cross Validation"></a><div class=media-body><h4 class=media-heading><a href=/blog/cross-validation/>Cross Validation</a></h4><p>교차검증이란?
+머신러닝의 평가 단계에서 자주 사용하는 검증방법이다.
+​ …</p></div></div><div class=media><a class=pull-left href=/blog/%ED%99%95%EB%A5%A0%EC%9D%B4%EB%A1%A0-2/><img class=media-object src=/images/blog/default.jpg alt="확률이론 (2)"></a><div class=media-body><h4 class=media-heading><a href=/blog/%ED%99%95%EB%A5%A0%EC%9D%B4%EB%A1%A0-2/>확률이론 (2)</a></h4><p>용어 정리 기댓값 (Expectations) 확률분포 p(x) 하에서 함수 f(x)의 평 …</p></div></div></div><div class="widget widget-category"><h4 class=widget-title>Categories</h4><ul class=widget-category-list><li><a href=/categories/none/>None</a></li><li><a href=/categories/security/>Security</a></li></ul></div><div class="widget widget-tag"><h4 class=widget-title>Tags</h4><ul class=widget-tag-list><li><a href=/tags/block-chain/>Block chain</a></li><li><a href=/tags/none/>None</a></li></ul></div></aside></div></div></div></section><footer class=footer><div class=container><div class=row><div class=col-md-12><div class=footer-menu><ul><li><a href=/about>About</a></li><li><a href=/project>Project</a></li><li><a href=/service>Service</a></li><li><a href=/pricing>Pricing</a></li><li><a href=/faq>FAQ</a></li><li><a href=/contact>Contact</a></li></ul></div><p class=copyright>Copyright © 2021 <a href=https://themefisher.com>Themefisher</a>. All Rights Reserved.</p></div></div></div></footer><script src=/plugins/jquery/jquery.min.js></script><script src=/plugins/bootstrap/js/bootstrap.min.js></script><script src=/plugins/slick/slick.min.js></script><script src=/plugins/magnific-popup/magnific-popup.min.js></script><script src=/plugins/shuffle/shuffle.min.js></script><script src=/plugins/google-map/gmap.js defer></script><script src=/js/bundled.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js></script><div id=js-cookie-box class="cookie-box cookie-box-hide">This site uses cookies. By continuing to use this website, you agree to their use. <span id=js-cookie-button class="btn btn-main btn-solid-border">I Accept</span></div><script>(function($){const cookieBox=document.getElementById('js-cookie-box');const cookieButton=document.getElementById('js-cookie-button');if(!Cookies.get('cookie-box')){cookieBox.classList.remove('cookie-box-hide');cookieButton.onclick=function(){Cookies.set('cookie-box',true,{expires:2});cookieBox.classList.add('cookie-box-hide');};}})(jQuery);</script><style>.cookie-box{position:fixed;left:0;right:0;bottom:0;text-align:center;z-index:9999;padding:1rem 2rem;background:#474747;transition:all .75s cubic-bezier(.19,1,.22,1);color:#fdfdfd}.cookie-box-hide{display:none}</style></body></html>
