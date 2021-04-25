@@ -2,7 +2,7 @@ baseURL: https://hojp7874.github.io
 
 languageCode: ko-kr
 title: "홍진표의 블로그"
-theme: "toha"
+theme: "airspace-hugo"
 
 # Manage languages
 # For any more details, you can check the official documentation: https://gohugo.io/content-management/multilingual/

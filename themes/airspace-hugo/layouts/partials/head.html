@@ -1,0 +1,47 @@
+<head>
+  <meta charset="utf-8">
+  <title>{{ with .Title }}{{ . }}{{ else }}{{ site.Title }}{{ end }}</title>
+
+  {{ "<!-- Mobile responsive meta -->" | safeHTML }}
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="{{ with .Params.Description }}{{ . }}{{ else }}{{ with site.Params.description }}{{ . }}{{ end }}{{ end }}">
+  {{ with site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+  {{ hugo.Generator }}
+
+  {{ with .Params.image }}
+  <meta property="og:image" content="{{ . | absURL }}" />
+  <meta name="twitter:image" content="{{ . | absURL }}"/>
+  {{ else }}
+  {{ with site.Params.image }}
+  <meta property="og:image" content="{{ . | absURL }}" />
+  <meta name="twitter:image" content="{{ . | absURL }}"/>
+  {{ end }}
+  {{ end }}
+  {{ template "_internal/opengraph.html" . }}
+  {{ template "_internal/twitter_cards.html" . }}
+  {{ template "_internal/google_analytics.html" . }}
+
+  {{- with site.Params.counter -}}
+  {{ if .enable -}}
+  {{ with .username -}}
+  {{ "<!-- counter.dev analytics -->" | safeHTML }}
+  {{ $counterjs := resources.Get "js/counter.min.js" | resources.ExecuteAsTemplate "js/counter.min.js" . -}}
+  <script src="{{ $counterjs.RelPermalink }}"></script>
+  {{- end }}
+  {{- end }}
+  {{- end }}
+
+  {{ "<!-- Plugins -->" | safeHTML }}
+  {{ range site.Params.plugins.css -}}
+  <link rel="stylesheet" href="{{ .link | relURL }}" {{ .attributes | safeHTMLAttr }}>
+  {{ end }}
+
+  {{ "<!-- Main stylesheet -->" | safeHTML }}
+  {{ $styles := slice (resources.Get "scss/style.scss") (resources.Get "scss/custom.scss") | resources.Concat "scss/bundled.scss" | toCSS | minify -}}
+  <link rel="stylesheet" href="{{ $styles.RelPermalink }}" media="screen">
+
+  {{ "<!-- Favicon -->" | safeHTML }}
+  <link rel="shortcut icon" href="{{ `images/favicon.png` | relURL }}" type="image/x-icon">
+  <link rel="icon" href="{{ `images/favicon.png` | relURL }}" type="image/x-icon">
+
+</head>

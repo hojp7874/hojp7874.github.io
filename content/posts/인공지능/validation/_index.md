@@ -7,7 +7,7 @@ menu:
   sidebar:
     name: Validation
     identifier: Validation
-    parent: 
+    parent: "인공지능"
     weight: 10
 draft: false
 ---
