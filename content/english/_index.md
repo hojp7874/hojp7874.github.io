@@ -4,7 +4,7 @@ banner:
   enable: true
   bg_image: "images/slider-bg.jpg"
   bg_overlay: true
-  title: "A Digital Marketing <br/> & Design Agency"
+  title: "블로그 이전 중입니다 <br/> 상단의 `BLOG`를 눌러주세요"
   content: "We love the Web and the work we do.We work closely with our clients to deliver  the best possible solutions for their needs"
   button:
     enable: true
@@ -91,7 +91,7 @@ funfacts:
               
   # testimonial item loop
   - name: "Randi Renin"
-    image: "images/clients/avater-1.jpg"
+    image: "images/clients/avater-2.jpg"
     designation: "CEO-Themefisher"
     content: "This Company created an e-commerce site with the tools to make our business a success, with innovative ideas we feel that our site has unique elements that make us stand out from the crowd."
               
