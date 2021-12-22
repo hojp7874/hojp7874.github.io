@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-      <title>왈러스 연산자? :=</title>
+      <title>왈러스 연산자</title>
     
           <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
           <link rel="stylesheet" href="../_static/theme.css " type="text/css" />
@@ -75,13 +75,13 @@
         
           <li class="toctree-l1 current">
             
-              <a href="#" class="reference internal current">왈러스 연산자? :=</a>
+              <a href="#" class="reference internal current">왈러스 연산자</a>
             
 
             
               <ul>
                 
-                  <li class="toctree-l2"><a href="#id1" class="reference internal">왈러스 연산자? :=</a></li>
+                  <li class="toctree-l2"><a href="#id2" class="reference internal">왈러스 연산자? :=</a></li>
                 
                   <li class="toctree-l2"><a href="#switch-case" class="reference internal">switch/case 흉내내기</a></li>
                 
@@ -104,7 +104,7 @@
   <ul class="breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
     
-    <li>왈러스 연산자? <code class="docutils literal notranslate"><span class="pre">:=</span></code></li>
+    <li>왈러스 연산자</li>
   </ul>
   
 
@@ -119,13 +119,15 @@
 <hr>
           <div class="content" role="main" v-pre>
             
-  <blockquote>
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>왈러스 연산자<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<blockquote>
 <div><p>간혹 우리는 switch/case 구문 또는 do/while 구문을 사용하고 싶습니다.
 그러나 Python에서는 이런 문법을 지원하지 않습니다.
 이를 흉내내기 위해 파이썬 3.8부터는 왈러스 연산자 (<code class="docutils literal notranslate"><span class="pre">:=</span></code>) 를 만들었습니다.</p>
 </div></blockquote>
-<section id="id1">
-<h1>왈러스 연산자? <code class="docutils literal notranslate"><span class="pre">:=</span></code><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<section id="id2">
+<h2>왈러스 연산자? <code class="docutils literal notranslate"><span class="pre">:=</span></code><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>대입식 이라고도 불리는 왈러스 연산자는 __as 구문__과 쓰임이 유사합니다.</p>
 <p>간단히 예제 코드를 살펴봅시다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 해당 조건에 맞으면 True를 반환하는 코드</span>
@@ -148,7 +150,7 @@
 <p>이를 잘 활용하면 <code class="docutils literal notranslate"><span class="pre">switch/case</span></code> 구문과 <code class="docutils literal notranslate"><span class="pre">do/while</span></code> 구문을 파이썬에서도 흉내낼 수 있습니다.</p>
 </section>
 <section id="switch-case">
-<h1>switch/case 흉내내기<a class="headerlink" href="#switch-case" title="Permalink to this headline">¶</a></h1>
+<h2>switch/case 흉내내기<a class="headerlink" href="#switch-case" title="Permalink to this headline">¶</a></h2>
 <p>예제를 만들어봅시다.</p>
 <blockquote>
 <div><p>철수는 스포츠경기 관람 좋아합니다.</p>
@@ -187,7 +189,7 @@
 </div>
 </section>
 <section id="do-while">
-<h1>do/while 흉내내기<a class="headerlink" href="#do-while" title="Permalink to this headline">¶</a></h1>
+<h2>do/while 흉내내기<a class="headerlink" href="#do-while" title="Permalink to this headline">¶</a></h2>
 <p>예제를 만들어봅시다.</p>
 <blockquote>
 <div><p>철수는 야구경기가 진행되는 도중에 경기장에 도착했습니다.</p>
@@ -211,6 +213,7 @@
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;HOME팀의 점수: </span><span class="si">{</span><span class="n">home_score</span><span class="si">}</span><span class="s1">점&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</section>
 </section>
 
 
