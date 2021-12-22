@@ -7,8 +7,10 @@ Welcome to Jinpyo's Blog's documentation!
 =========================================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 1
+   :caption: Python:
+
+   python/walrus_operator
 
 
 

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+      <title>왈러스 연산자? :=</title>
+    
+          <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="../_static/theme.css " type="text/css" />
+      
+      <!-- sphinx script_files -->
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+
+      
+      <!-- bundled in js (rollup iife) -->
+      <!-- <script src="../_static/theme-vendors.js"></script> -->
+      <script src="../_static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="../genindex.html" />
+  <link rel="search" title="Search" href="../search.html" />
+  <link rel="prev" title="Welcome to Jinpyo’s Blog’s documentation!" href="../index.html" /> 
+  </head>
+
+  <body>
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="../index.html" class="home-link">
+    
+      <span class="site-name">Jinpyo&#39;s Blog</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="../search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-jinpyo-s-blog-s-documentation">Python:</a></span>
+      </p>
+      <ul class="current">
+        
+          <li class="toctree-l1 current">
+            
+              <a href="#" class="reference internal current">왈러스 연산자? :=</a>
+            
+
+            
+              <ul>
+                
+                  <li class="toctree-l2"><a href="#id1" class="reference internal">왈러스 연산자? :=</a></li>
+                
+                  <li class="toctree-l2"><a href="#switch-case" class="reference internal">switch/case 흉내내기</a></li>
+                
+                  <li class="toctree-l2"><a href="#do-while" class="reference internal">do/while 흉내내기</a></li>
+                
+              </ul>
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+    <li>왈러스 연산자? <code class="docutils literal notranslate"><span class="pre">:=</span></code></li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="../index.html"
+       title="previous chapter">← Welcome to Jinpyo’s Blog’s documentation!</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main" v-pre>
+            
+  <blockquote>
+<div><p>간혹 우리는 switch/case 구문 또는 do/while 구문을 사용하고 싶습니다.
+그러나 Python에서는 이런 문법을 지원하지 않습니다.
+이를 흉내내기 위해 파이썬 3.8부터는 왈러스 연산자 (<code class="docutils literal notranslate"><span class="pre">:=</span></code>) 를 만들었습니다.</p>
+</div></blockquote>
+<section id="id1">
+<h1>왈러스 연산자? <code class="docutils literal notranslate"><span class="pre">:=</span></code><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>대입식 이라고도 불리는 왈러스 연산자는 __as 구문__과 쓰임이 유사합니다.
+간단히 예제 코드를 살펴봅시다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 해당 조건에 맞으면 True를 반환하는 코드</span>
+<span class="k">def</span> <span class="nf">condition</span><span class="p">():</span>
+	<span class="k">pass</span>
+
+<span class="c1"># &lt;if len(filter(condition, dataset)) as cnt:&gt; 와 유사</span>
+<span class="k">if</span> <span class="n">cnt</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="n">condition</span><span class="p">,</span> <span class="n">dataset</span><span class="p">)):</span>
+	<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;해당 조건에 맞는 검색결과가 </span><span class="si">{</span><span class="n">cnt</span><span class="si">}</span><span class="s2">건 있습니다.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+	<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;해당 조건에 맞는 검색결과가 없습니다.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>안타깝게도 if 문 또는 while 문에서는 as를 사용할 수 없기 때문에 왈러스 연산자를 이용해야 합니다.
+왈러스 연산자가 사용된 <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">cnt</span> <span class="pre">:=</span> <span class="pre">len(filter(condition,</span> <span class="pre">dataset))</span></code> 행의 로직은 아래와 같습니다.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cnt</span></code>에 <code class="docutils literal notranslate"><span class="pre">len(filter(condition,</span> <span class="pre">dataset))</span></code>을 대입한다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cnt</span></code>가 <code class="docutils literal notranslate"><span class="pre">True</span></code>면 if문을 실행한다.</p></li>
+</ol>
+<p>이를 잘 활용하면 <code class="docutils literal notranslate"><span class="pre">switch/case</span></code> 구문과 <code class="docutils literal notranslate"><span class="pre">do/while</span></code> 구문을 파이썬에서도 흉내낼 수 있습니다.</p>
+</section>
+<section id="switch-case">
+<h1>switch/case 흉내내기<a class="headerlink" href="#switch-case" title="Permalink to this headline">¶</a></h1>
+<p>예제를 만들어봅시다.</p>
+<blockquote>
+<div><p>철수는 스포츠경기 관람 좋아합니다.
+축구, 야구, 농구 순으로 좋아합니다.
+선호하는 스포츠 경기 수를 조회하는 로직을 만들려고 합니다.</p>
+<p>만약 축구경기가 열려있다면 이를 조회하고,
+축구경기가 없다면 야구경기를,
+야구경기가 없다면 농구경기를 보여주는 로직을 구현합니다.</p>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cnt</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="o">&lt;</span><span class="n">축구</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">모든</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">cnt</span><span class="p">:</span>
+	<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;축구 경기가 </span><span class="si">{</span><span class="n">cnt</span><span class="si">}</span><span class="s1">개 있습니다.&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+	<span class="n">cnt</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="o">&lt;</span><span class="n">야구</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">모든</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">))</span>
+	<span class="k">if</span> <span class="n">cnt</span><span class="p">:</span>
+		<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;야구 경기가 </span><span class="si">{</span><span class="n">cnt</span><span class="si">}</span><span class="s1">개 있습니다.&#39;</span><span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">cnt</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="o">&lt;</span><span class="n">농구</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">모든</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">))</span>
+		<span class="k">if</span> <span class="n">cnt</span><span class="p">:</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;농구 경기가 </span><span class="si">{</span><span class="n">cnt</span><span class="si">}</span><span class="s1">개 있습니다.&#39;</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;선호하는 경기가 없습니다.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>if, else문의 반복으로 가독성이 현저히 저하됩니다.
+왈러스 연산자를 이용하면 이 코드를 획기적으로 정리할 수 있습니다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">cnt</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="o">&lt;</span><span class="n">축구</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">전체</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">)):</span>
+	<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;축구 경기가 </span><span class="si">{</span><span class="n">cnt</span><span class="si">}</span><span class="s1">개 있습니다.&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">cnt</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="o">&lt;</span><span class="n">야구</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">전체</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">)):</span>
+	<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;야구 경기가 </span><span class="si">{</span><span class="n">cnt</span><span class="si">}</span><span class="s1">개 있습니다.&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">cnt</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="o">&lt;</span><span class="n">농구</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">전체</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">)):</span>
+	<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;농구 경기가 </span><span class="si">{</span><span class="n">cnt</span><span class="si">}</span><span class="s1">개 있습니다.&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+	<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;선호하는 경기가 없습니다.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="do-while">
+<h1>do/while 흉내내기<a class="headerlink" href="#do-while" title="Permalink to this headline">¶</a></h1>
+<p>예제를 만들어봅시다.</p>
+<blockquote>
+<div><p>철수는 야구경기가 진행되는 도중에 경기장에 도착했습니다.
+그리고 잠시 뒤에 있는 농구 경기도 보고싶었습니다.
+그래서 야구경기를 home팀이 10점을 따는 라운드 까지만 보려고 합니다.
+철수가 마지막으로 본 라운드를 출력하는 로직을 만들어봅시다.</p>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rnd</span> <span class="o">=</span> <span class="n">get_round</span><span class="p">()</span>
+<span class="n">home_score</span> <span class="o">=</span> <span class="n">get_home_score</span><span class="p">()</span>
+<span class="k">while</span> <span class="n">home_score</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="ow">or</span> <span class="n">rnd</span> <span class="o">&lt;=</span> <span class="mi">9</span><span class="p">:</span>
+	<span class="n">home_score</span> <span class="o">=</span> <span class="n">get_home_score</span><span class="p">()</span>
+	<span class="n">rnd</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;HOME팀의 점수: </span><span class="si">{</span><span class="n">home_score</span><span class="si">}</span><span class="s1">점&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">home_score</span> <span class="pre">=</span> <span class="pre">get_home_score()</span></code> 구문이 불필요하게 중복됩니다.
+왈러스 연산자를 이용해 중복을 줄여봅시다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rnd</span> <span class="o">=</span> <span class="n">get_round</span><span class="p">()</span>
+<span class="k">while</span> <span class="n">home_score</span> <span class="o">:=</span> <span class="n">get_home_score</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+	<span class="n">rnd</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;HOME팀의 점수: </span><span class="si">{</span><span class="n">home_score</span><span class="si">}</span><span class="s1">점&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="../index.html"
+       title="previous chapter">← Welcome to Jinpyo’s Blog’s documentation!</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2021, Jinpyo Hong.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
+</div>
+            </div>
+          </div>
+      </page>
+    </div></div>
+    
+    
+  </body>
+</html>
