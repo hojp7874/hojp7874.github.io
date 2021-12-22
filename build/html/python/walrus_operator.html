@@ -126,8 +126,8 @@
 </div></blockquote>
 <section id="id1">
 <h1>왈러스 연산자? <code class="docutils literal notranslate"><span class="pre">:=</span></code><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>대입식 이라고도 불리는 왈러스 연산자는 __as 구문__과 쓰임이 유사합니다.
-간단히 예제 코드를 살펴봅시다.</p>
+<p>대입식 이라고도 불리는 왈러스 연산자는 __as 구문__과 쓰임이 유사합니다.</p>
+<p>간단히 예제 코드를 살펴봅시다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 해당 조건에 맞으면 True를 반환하는 코드</span>
 <span class="k">def</span> <span class="nf">condition</span><span class="p">():</span>
 	<span class="k">pass</span>
@@ -139,8 +139,8 @@
 	<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;해당 조건에 맞는 검색결과가 없습니다.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>안타깝게도 if 문 또는 while 문에서는 as를 사용할 수 없기 때문에 왈러스 연산자를 이용해야 합니다.
-왈러스 연산자가 사용된 <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">cnt</span> <span class="pre">:=</span> <span class="pre">len(filter(condition,</span> <span class="pre">dataset))</span></code> 행의 로직은 아래와 같습니다.</p>
+<p>안타깝게도 if 문 또는 while 문에서는 as를 사용할 수 없기 때문에 왈러스 연산자를 이용해야 합니다.</p>
+<p>왈러스 연산자가 사용된 <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">cnt</span> <span class="pre">:=</span> <span class="pre">len(filter(condition,</span> <span class="pre">dataset))</span></code> 행의 로직은 아래와 같습니다.</p>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">cnt</span></code>에 <code class="docutils literal notranslate"><span class="pre">len(filter(condition,</span> <span class="pre">dataset))</span></code>을 대입한다.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cnt</span></code>가 <code class="docutils literal notranslate"><span class="pre">True</span></code>면 if문을 실행한다.</p></li>
@@ -151,12 +151,12 @@
 <h1>switch/case 흉내내기<a class="headerlink" href="#switch-case" title="Permalink to this headline">¶</a></h1>
 <p>예제를 만들어봅시다.</p>
 <blockquote>
-<div><p>철수는 스포츠경기 관람 좋아합니다.
-축구, 야구, 농구 순으로 좋아합니다.
-선호하는 스포츠 경기 수를 조회하는 로직을 만들려고 합니다.</p>
-<p>만약 축구경기가 열려있다면 이를 조회하고,
-축구경기가 없다면 야구경기를,
-야구경기가 없다면 농구경기를 보여주는 로직을 구현합니다.</p>
+<div><p>철수는 스포츠경기 관람 좋아합니다.</p>
+<p>축구, 야구, 농구 순으로 좋아합니다.</p>
+<p>선호하는 스포츠 경기 수를 조회하는 로직을 만들려고 합니다.</p>
+<p>만약 축구경기가 열려있다면 이를 조회하고,</p>
+<p>축구경기가 없다면 야구경기를,</p>
+<p>야구경기가 없다면 농구경기를 보여주는 로직을 구현합니다.</p>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cnt</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="o">&lt;</span><span class="n">축구</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">모든</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">))</span>
 <span class="k">if</span> <span class="n">cnt</span><span class="p">:</span>
@@ -173,8 +173,8 @@
 			<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;선호하는 경기가 없습니다.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>if, else문의 반복으로 가독성이 현저히 저하됩니다.
-왈러스 연산자를 이용하면 이 코드를 획기적으로 정리할 수 있습니다.</p>
+<p>if, else문의 반복으로 가독성이 현저히 저하됩니다.</p>
+<p>왈러스 연산자를 이용하면 이 코드를 획기적으로 정리할 수 있습니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">cnt</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="o">&lt;</span><span class="n">축구</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">전체</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">)):</span>
 	<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;축구 경기가 </span><span class="si">{</span><span class="n">cnt</span><span class="si">}</span><span class="s1">개 있습니다.&#39;</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">cnt</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="o">&lt;</span><span class="n">야구</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">전체</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">)):</span>
@@ -190,10 +190,10 @@
 <h1>do/while 흉내내기<a class="headerlink" href="#do-while" title="Permalink to this headline">¶</a></h1>
 <p>예제를 만들어봅시다.</p>
 <blockquote>
-<div><p>철수는 야구경기가 진행되는 도중에 경기장에 도착했습니다.
-그리고 잠시 뒤에 있는 농구 경기도 보고싶었습니다.
-그래서 야구경기를 home팀이 10점을 따는 라운드 까지만 보려고 합니다.
-철수가 마지막으로 본 라운드를 출력하는 로직을 만들어봅시다.</p>
+<div><p>철수는 야구경기가 진행되는 도중에 경기장에 도착했습니다.</p>
+<p>그리고 잠시 뒤에 있는 농구 경기도 보고싶었습니다.</p>
+<p>그래서 야구경기를 home팀이 10점을 따는 라운드 까지만 보려고 합니다.</p>
+<p>철수가 마지막으로 본 라운드를 출력하는 로직을 만들어봅시다.</p>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rnd</span> <span class="o">=</span> <span class="n">get_round</span><span class="p">()</span>
 <span class="n">home_score</span> <span class="o">=</span> <span class="n">get_home_score</span><span class="p">()</span>
@@ -203,8 +203,8 @@
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;HOME팀의 점수: </span><span class="si">{</span><span class="n">home_score</span><span class="si">}</span><span class="s1">점&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">home_score</span> <span class="pre">=</span> <span class="pre">get_home_score()</span></code> 구문이 불필요하게 중복됩니다.
-왈러스 연산자를 이용해 중복을 줄여봅시다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">home_score</span> <span class="pre">=</span> <span class="pre">get_home_score()</span></code> 구문이 불필요하게 중복됩니다.</p>
+<p>왈러스 연산자를 이용해 중복을 줄여봅시다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rnd</span> <span class="o">=</span> <span class="n">get_round</span><span class="p">()</span>
 <span class="k">while</span> <span class="n">home_score</span> <span class="o">:=</span> <span class="n">get_home_score</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
 	<span class="n">rnd</span> <span class="o">+=</span> <span class="mi">1</span>
