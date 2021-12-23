@@ -1,133 +1,220 @@
+
 <!DOCTYPE html>
-<html >
+
+<html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-      <title>왈러스 연산자</title>
-    
-          <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-          <link rel="stylesheet" href="../_static/theme.css " type="text/css" />
-      
-      <!-- sphinx script_files -->
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
 
-      
-      <!-- bundled in js (rollup iife) -->
-      <!-- <script src="../_static/theme-vendors.js"></script> -->
-      <script src="../_static/theme.js" defer></script>
-    
-  <link rel="index" title="Index" href="../genindex.html" />
-  <link rel="search" title="Search" href="../search.html" />
-  <link rel="prev" title="Welcome to Jinpyo’s Blog’s documentation!" href="../index.html" /> 
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>왈러스 연산자 &#8212; Jinpyo&#39;s Blog 0.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Welcome to Jinpyo’s Blog’s documentation!" href="../index.html" />
+  
+   
+
   </head>
-
-  <body>
-    <div id="app">
-    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
-  <router-link to="../index.html" class="home-link">
-    
-      <span class="site-name">Jinpyo&#39;s Blog</span>
-    
-  </router-link>
-
-  <div class="links">
-    <navlinks class="can-hide">
-
-
-
-    </navlinks>
-  </div>
-</navbar>
-
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
       
-      <div class="sidebar-mask" @click="toggleSidebar(false)">
-      </div>
-        <sidebar @toggle-sidebar="toggleSidebar">
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#python/walrus_operator" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../index.html" title="Jinpyo&#39;s Blog 0.0.0 documentation"
+           class="md-header-nav__button md-logo">
           
-          <navlinks>
-            
-
-
-
-            
-          </navlinks><div id="searchbox" class="searchbox" role="search">
-  <div class="caption"><span class="caption-text">Quick search</span>
-    <div class="searchformwrapper">
-      <form class="search" action="../search.html" method="get">
-        <input type="text" name="q" />
-        <input type="submit" value="Search" />
-        <input type="hidden" name="check_keywords" value="yes" />
-        <input type="hidden" name="area" value="default" />
-      </form>
+            &nbsp;
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">Jinpyo's Blog 0.0.0 documentation</span>
+          <span class="md-header-nav__topic"> 왈러스 연산자 </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
     </div>
   </div>
-</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+</div>
+
+      </div>
+      
+      
   
-    <div class="sidebar-group">
-      <p class="caption">
-        <span class="caption-text"><a href="../index.html#welcome-to-jinpyo-s-blog-s-documentation">Python:</a></span>
-      </p>
-      <ul class="current">
-        
-          <li class="toctree-l1 current">
-            
-              <a href="#" class="reference internal current">왈러스 연산자</a>
-            
+  <script src="../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../"versions.json"",
+        target_loc = "../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
 
-            
-              <ul>
-                
-                  <li class="toctree-l2"><a href="#id2" class="reference internal">왈러스 연산자? :=</a></li>
-                
-                  <li class="toctree-l2"><a href="#switch-case" class="reference internal">switch/case 흉내내기</a></li>
-                
-                  <li class="toctree-l2"><a href="#do-while" class="reference internal">do/while 흉내내기</a></li>
-                
-              </ul>
-            
-          </li>
+    </div>
+  </nav>
+</header>
 
-        
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">Jinpyo's Blog 0.0.0 documentation</a></li>
       </ul>
     </div>
-  
-</div>
-        </sidebar>
-
-      <page>
-          <div class="body-header" role="navigation" aria-label="navigation">
-  
-  <ul class="breadcrumbs">
-    <li><a href="../index.html">Docs</a> &raquo;</li>
-    
-    <li>왈러스 연산자</li>
-  </ul>
-  
-
-  <ul class="page-nav">
-  <li class="prev">
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="Jinpyo&#39;s Blog 0.0.0 documentation" class="md-nav__button md-logo">
+      
+        <img src="../_static/" alt=" logo" width="48" height="48">
+      
+    </a>
     <a href="../index.html"
-       title="previous chapter">← Welcome to Jinpyo’s Blog’s documentation!</a>
-  </li>
-</ul>
+       title="Jinpyo&#39;s Blog 0.0.0 documentation">Jinpyo's Blog 0.0.0 documentation</a>
+  </label>
   
-</div>
-<hr>
-          <div class="content" role="main" v-pre>
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#python-walrus-operator--page-root" class="md-nav__link">왈러스 연산자</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id2" class="md-nav__link">왈러스 연산자? <code class="docutils literal notranslate"><span class="pre">:=</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#switch-case" class="md-nav__link">switch/case 흉내내기</a>
+        </li>
+        <li class="md-nav__item"><a href="#do-while" class="md-nav__link">do/while 흉내내기</a>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../_sources/python/walrus_operator.md.txt">Show Source</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
             
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>왈러스 연산자<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1 id="python-walrus-operator--page-root">왈러스 연산자<a class="headerlink" href="#python-walrus-operator--page-root" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>간혹 우리는 switch/case 구문 또는 do/while 구문을 사용하고 싶습니다.
 그러나 Python에서는 이런 문법을 지원하지 않습니다.
 이를 흉내내기 위해 파이썬 3.8부터는 왈러스 연산자 (<code class="docutils literal notranslate"><span class="pre">:=</span></code>) 를 만들었습니다.</p>
 </div></blockquote>
 <section id="id2">
-<h2>왈러스 연산자? <code class="docutils literal notranslate"><span class="pre">:=</span></code><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2 id="id2">왈러스 연산자? <code class="docutils literal notranslate"><span class="pre">:=</span></code><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>대입식 이라고도 불리는 왈러스 연산자는 __as 구문__과 쓰임이 유사합니다.</p>
 <p>간단히 예제 코드를 살펴봅시다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 해당 조건에 맞으면 True를 반환하는 코드</span>
@@ -136,9 +223,9 @@
 
 <span class="c1"># &lt;if len(filter(condition, dataset)) as cnt:&gt; 와 유사</span>
 <span class="k">if</span> <span class="n">cnt</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="n">condition</span><span class="p">,</span> <span class="n">dataset</span><span class="p">)):</span>
-	<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;해당 조건에 맞는 검색결과가 </span><span class="si">{</span><span class="n">cnt</span><span class="si">}</span><span class="s2">건 있습니다.&quot;</span><span class="p">)</span>
+	<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"해당 조건에 맞는 검색결과가 </span><span class="si">{</span><span class="n">cnt</span><span class="si">}</span><span class="s2">건 있습니다."</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-	<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;해당 조건에 맞는 검색결과가 없습니다.&quot;</span><span class="p">)</span>
+	<span class="nb">print</span><span class="p">(</span><span class="s2">"해당 조건에 맞는 검색결과가 없습니다."</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>안타깝게도 if 문 또는 while 문에서는 as를 사용할 수 없기 때문에 왈러스 연산자를 이용해야 합니다.</p>
@@ -150,7 +237,7 @@
 <p>이를 잘 활용하면 <code class="docutils literal notranslate"><span class="pre">switch/case</span></code> 구문과 <code class="docutils literal notranslate"><span class="pre">do/while</span></code> 구문을 파이썬에서도 흉내낼 수 있습니다.</p>
 </section>
 <section id="switch-case">
-<h2>switch/case 흉내내기<a class="headerlink" href="#switch-case" title="Permalink to this headline">¶</a></h2>
+<h2 id="switch-case">switch/case 흉내내기<a class="headerlink" href="#switch-case" title="Permalink to this headline">¶</a></h2>
 <p>예제를 만들어봅시다.</p>
 <blockquote>
 <div><p>철수는 스포츠경기 관람 좋아합니다.</p>
@@ -162,34 +249,34 @@
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cnt</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="o">&lt;</span><span class="n">축구</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">모든</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">))</span>
 <span class="k">if</span> <span class="n">cnt</span><span class="p">:</span>
-	<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;축구 경기가 </span><span class="si">{</span><span class="n">cnt</span><span class="si">}</span><span class="s1">개 있습니다.&#39;</span><span class="p">)</span>
+	<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'축구 경기가 </span><span class="si">{</span><span class="n">cnt</span><span class="si">}</span><span class="s1">개 있습니다.'</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
 	<span class="n">cnt</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="o">&lt;</span><span class="n">야구</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">모든</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">))</span>
 	<span class="k">if</span> <span class="n">cnt</span><span class="p">:</span>
-		<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;야구 경기가 </span><span class="si">{</span><span class="n">cnt</span><span class="si">}</span><span class="s1">개 있습니다.&#39;</span><span class="p">)</span>
+		<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'야구 경기가 </span><span class="si">{</span><span class="n">cnt</span><span class="si">}</span><span class="s1">개 있습니다.'</span><span class="p">)</span>
 	<span class="k">else</span><span class="p">:</span>
 		<span class="n">cnt</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="o">&lt;</span><span class="n">농구</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">모든</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">))</span>
 		<span class="k">if</span> <span class="n">cnt</span><span class="p">:</span>
-			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;농구 경기가 </span><span class="si">{</span><span class="n">cnt</span><span class="si">}</span><span class="s1">개 있습니다.&#39;</span><span class="p">)</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'농구 경기가 </span><span class="si">{</span><span class="n">cnt</span><span class="si">}</span><span class="s1">개 있습니다.'</span><span class="p">)</span>
 		<span class="k">else</span><span class="p">:</span>
-			<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;선호하는 경기가 없습니다.&#39;</span><span class="p">)</span>
+			<span class="nb">print</span><span class="p">(</span><span class="s1">'선호하는 경기가 없습니다.'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>if, else문의 반복으로 가독성이 현저히 저하됩니다.</p>
 <p>왈러스 연산자를 이용하면 이 코드를 획기적으로 정리할 수 있습니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">cnt</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="o">&lt;</span><span class="n">축구</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">전체</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">)):</span>
-	<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;축구 경기가 </span><span class="si">{</span><span class="n">cnt</span><span class="si">}</span><span class="s1">개 있습니다.&#39;</span><span class="p">)</span>
+	<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'축구 경기가 </span><span class="si">{</span><span class="n">cnt</span><span class="si">}</span><span class="s1">개 있습니다.'</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">cnt</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="o">&lt;</span><span class="n">야구</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">전체</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">)):</span>
-	<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;야구 경기가 </span><span class="si">{</span><span class="n">cnt</span><span class="si">}</span><span class="s1">개 있습니다.&#39;</span><span class="p">)</span>
+	<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'야구 경기가 </span><span class="si">{</span><span class="n">cnt</span><span class="si">}</span><span class="s1">개 있습니다.'</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">cnt</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="o">&lt;</span><span class="n">농구</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">전체</span> <span class="n">경기</span><span class="o">&gt;</span><span class="p">)):</span>
-	<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;농구 경기가 </span><span class="si">{</span><span class="n">cnt</span><span class="si">}</span><span class="s1">개 있습니다.&#39;</span><span class="p">)</span>
+	<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'농구 경기가 </span><span class="si">{</span><span class="n">cnt</span><span class="si">}</span><span class="s1">개 있습니다.'</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-	<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;선호하는 경기가 없습니다.&#39;</span><span class="p">)</span>
+	<span class="nb">print</span><span class="p">(</span><span class="s1">'선호하는 경기가 없습니다.'</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="do-while">
-<h2>do/while 흉내내기<a class="headerlink" href="#do-while" title="Permalink to this headline">¶</a></h2>
+<h2 id="do-while">do/while 흉내내기<a class="headerlink" href="#do-while" title="Permalink to this headline">¶</a></h2>
 <p>예제를 만들어봅시다.</p>
 <blockquote>
 <div><p>철수는 야구경기가 진행되는 도중에 경기장에 도착했습니다.</p>
@@ -202,7 +289,7 @@
 <span class="k">while</span> <span class="n">home_score</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="ow">or</span> <span class="n">rnd</span> <span class="o">&lt;=</span> <span class="mi">9</span><span class="p">:</span>
 	<span class="n">home_score</span> <span class="o">=</span> <span class="n">get_home_score</span><span class="p">()</span>
 	<span class="n">rnd</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;HOME팀의 점수: </span><span class="si">{</span><span class="n">home_score</span><span class="si">}</span><span class="s1">점&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'HOME팀의 점수: </span><span class="si">{</span><span class="n">home_score</span><span class="si">}</span><span class="s1">점'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">home_score</span> <span class="pre">=</span> <span class="pre">get_home_score()</span></code> 구문이 불필요하게 중복됩니다.</p>
@@ -210,30 +297,57 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rnd</span> <span class="o">=</span> <span class="n">get_round</span><span class="p">()</span>
 <span class="k">while</span> <span class="n">home_score</span> <span class="o">:=</span> <span class="n">get_home_score</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
 	<span class="n">rnd</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;HOME팀의 점수: </span><span class="si">{</span><span class="n">home_score</span><span class="si">}</span><span class="s1">점&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'HOME팀의 점수: </span><span class="si">{</span><span class="n">home_score</span><span class="si">}</span><span class="s1">점'</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 </section>
 
 
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="../index.html" title="Welcome to Jinpyo’s Blog’s documentation!"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> Welcome to Jinpyo’s Blog’s documentation! </span>
+              </div>
+            </a>
+          
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2021, Jinpyo Hong.
+              
           </div>
-          <div class="page-nav">
-            <div class="inner"><ul class="page-nav">
-  <li class="prev">
-    <a href="../index.html"
-       title="previous chapter">← Welcome to Jinpyo’s Blog’s documentation!</a>
-  </li>
-</ul><div class="footer" role="contentinfo">
-      &#169; Copyright 2021, Jinpyo Hong.
-    <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
-</div>
-            </div>
-          </div>
-      </page>
-    </div></div>
-    
-    
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
   </body>
 </html>
