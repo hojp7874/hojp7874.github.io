@@ -1,25 +1,27 @@
 # 왈러스 연산자 
 
 > 간혹 우리는 switch/case 구문 또는 do/while 구문을 사용하고 싶습니다.
+>
 > 그러나 Python에서는 이런 문법을 지원하지 않습니다.
-> 이를 흉내내기 위해 파이썬 3.8부터는 왈러스 연산자 (`:=`) 를 만들었습니다.
+>
+> 파이썬 3.8부터는 왈러스 연산자 (`:=`) 를 통해 이러한 문법을 흉내낼 수 있습니다.
 
 
-## 왈러스 연산자? `:=`
-대입식 이라고도 불리는 왈러스 연산자는 __as 구문__과 쓰임이 유사합니다.
+## 왈러스 연산자(`:=`)?
+대입식 이라고도 불리는 왈러스 연산자는 __as 구문__ 과 쓰임이 유사합니다.
 
 간단히 예제 코드를 살펴봅시다.
 
 ```python
 # 해당 조건에 맞으면 True를 반환하는 코드
 def condition():
-	pass
+    pass
 
 # <if len(filter(condition, dataset)) as cnt:> 와 유사
 if cnt := len(filter(condition, dataset)):
-	print(f"해당 조건에 맞는 검색결과가 {cnt}건 있습니다.")
+    print(f"해당 조건에 맞는 검색결과가 {cnt}건 있습니다.")
 else:
-	print("해당 조건에 맞는 검색결과가 없습니다.")
+    print("해당 조건에 맞는 검색결과가 없습니다.")
 ```
 
 안타깝게도 if 문 또는 while 문에서는 as를 사용할 수 없기 때문에 왈러스 연산자를 이용해야 합니다.
@@ -52,17 +54,17 @@ else:
 ```python
 cnt = len(filter(<축구 경기>, <모든 경기>))
 if cnt:
-	print(f'축구 경기가 {cnt}개 있습니다.')
+    print(f'축구 경기가 {cnt}개 있습니다.')
 else:
-	cnt = len(filter(<야구 경기>, <모든 경기>))
-	if cnt:
-		print(f'야구 경기가 {cnt}개 있습니다.')
-	else:
-		cnt = len(filter(<농구 경기>, <모든 경기>))
-		if cnt:
-			print(f'농구 경기가 {cnt}개 있습니다.')
-		else:
-			print('선호하는 경기가 없습니다.')
+    cnt = len(filter(<야구 경기>, <모든 경기>))
+    if cnt:
+        print(f'야구 경기가 {cnt}개 있습니다.')
+    else:
+        cnt = len(filter(<농구 경기>, <모든 경기>))
+        if cnt:
+            print(f'농구 경기가 {cnt}개 있습니다.')
+        else:
+            print('선호하는 경기가 없습니다.')
 ```
 
 if, else문의 반복으로 가독성이 현저히 저하됩니다.
@@ -71,13 +73,13 @@ if, else문의 반복으로 가독성이 현저히 저하됩니다.
 
 ```python
 if cnt := len(filter(<축구 경기>, <전체 경기>)):
-	print(f'축구 경기가 {cnt}개 있습니다.')
+    print(f'축구 경기가 {cnt}개 있습니다.')
 elif cnt := len(filter(<야구 경기>, <전체 경기>)):
-	print(f'야구 경기가 {cnt}개 있습니다.')
+    print(f'야구 경기가 {cnt}개 있습니다.')
 elif cnt := len(filter(<농구 경기>, <전체 경기>)):
-	print(f'농구 경기가 {cnt}개 있습니다.')
+    print(f'농구 경기가 {cnt}개 있습니다.')
 else:
-	print('선호하는 경기가 없습니다.')
+    print('선호하는 경기가 없습니다.')
 ```
 
 ## do/while 흉내내기
@@ -97,8 +99,8 @@ else:
 rnd = get_round()
 home_score = get_home_score()
 while home_score < 10 or rnd <= 9:
-	home_score = get_home_score()
-	rnd += 1
+    home_score = get_home_score()
+    rnd += 1
 print(f'HOME팀의 점수: {home_score}점')
 ```
 
@@ -109,7 +111,6 @@ print(f'HOME팀의 점수: {home_score}점')
 ```python
 rnd = get_round()
 while home_score := get_home_score() < 10:
-	rnd += 1
+    rnd += 1
 print(f'HOME팀의 점수: {home_score}점')
 ```
-
