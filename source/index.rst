@@ -11,6 +11,7 @@ Welcome to Jinpyo's Blog's documentation!
    :caption: Python:
 
    python/walrus_operator
+   python/max_heap
 
 
 

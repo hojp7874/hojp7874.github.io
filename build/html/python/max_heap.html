@@ -1,0 +1,492 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>heapq로 최대힙 사용하기 &#8212; Jinpyo&#39;s Blog 0.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#python/max_heap" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../index.html" title="Jinpyo&#39;s Blog 0.0.0 documentation"
+           class="md-header-nav__button md-logo">
+          
+            &nbsp;
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">Jinpyo's Blog 0.0.0 documentation</span>
+          <span class="md-header-nav__topic"> heapq로 최대힙 사용하기 </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+      
+  
+  <script src="../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../"versions.json"",
+        target_loc = "../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">Jinpyo's Blog 0.0.0 documentation</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="Jinpyo&#39;s Blog 0.0.0 documentation" class="md-nav__button md-logo">
+      
+        <img src="../_static/" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../index.html"
+       title="Jinpyo&#39;s Blog 0.0.0 documentation">Jinpyo's Blog 0.0.0 documentation</a>
+  </label>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#python-max-heap--page-root" class="md-nav__link">heapq로 최대힙 사용하기</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id1" class="md-nav__link">소스코드 분석</a>
+        </li>
+        <li class="md-nav__item"><a href="#heappush-max" class="md-nav__link">_heappush_max 구현하기</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#siftdown-max" class="md-nav__link">_siftdown_max 로직 분석</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#id2" class="md-nav__link">장단점</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id3" class="md-nav__link">장점</a>
+        </li>
+        <li class="md-nav__item"><a href="#id4" class="md-nav__link">단점</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#max-heap" class="md-nav__link">Max Heap을 이용하는 권장하는 방법</a>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../_sources/python/max_heap.md.txt">Show Source</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section class="tex2jax_ignore mathjax_ignore" id="heapq">
+<h1 id="python-max-heap--page-root">heapq로 최대힙 사용하기<a class="headerlink" href="#python-max-heap--page-root" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>많은 파이썬 이용자들이 <code class="docutils literal notranslate"><span class="pre">heapq</span></code> 표준 라이브러리를 사용하지만 해당 라이브러리는 __Max Heap__을 구현하지 못하는 단점이 있습니다.
+그러나 <code class="docutils literal notranslate"><span class="pre">heapq</span></code> 소스코드에는 __Max Heap__의 많은 부분이 이미 구현되어있습니다.</p>
+<p>본 문서에서는 <code class="docutils literal notranslate"><span class="pre">heapq</span></code>의 소스코드를 분석해 __Max Heap__을 이용하는 방법에 대해 알아보겠습니다.</p>
+</div></blockquote>
+<section id="id1">
+<h2 id="id1">소스코드 분석<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>다음은 파이썬 표준 라이브러리인 <code class="docutils literal notranslate"><span class="pre">heapq</span></code>의 소스코드입니다.</p>
+<p>https://github.com/python/cpython/blob/main/Lib/heapq.py</p>
+<p><code class="docutils literal notranslate"><span class="pre">heapq</span></code> 에서 공식적으로 사용하도록 지정한 함수의 목록은 아래와 같습니다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'heappush'</span><span class="p">,</span> <span class="s1">'heappop'</span><span class="p">,</span> <span class="s1">'heapify'</span><span class="p">,</span> <span class="s1">'heapreplace'</span><span class="p">,</span> <span class="s1">'merge'</span><span class="p">,</span>
+		   <span class="s1">'nlargest'</span><span class="p">,</span> <span class="s1">'nsmallest'</span><span class="p">,</span> <span class="s1">'heappushpop'</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>그러나 이 함수들은 __Min Heap__을 기준으로 설계되어있습니다.</p>
+<p>우리가 찾아야 하는 것은 파이썬 접근제어자로 감춰져있는 아래의 함수들입니다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">_heapify_max</span></code>: <strong>Max Heap</strong> 버전의 <strong>heapify</strong> 입니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_heappop_max</span></code>: <strong>Max Heap</strong> 버전의 <strong>heappop</strong> 입니다.</p></li>
+</ul>
+<p>보시다시피 이미 __heapify__와 __heappop__은 <strong>Max Heap</strong> 버전이 이미 구현되어있습니다.</p>
+<p>따라서 <strong>Max Heap</strong> 버전의 __heappush__만 구현하여 사용하면 됩니다.</p>
+</section>
+<section id="heappush-max">
+<h2 id="heappush-max">_heappush_max 구현하기<a class="headerlink" href="#heappush-max" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">_heappush_max</span></code>를 구현하기 위해 <code class="docutils literal notranslate"><span class="pre">heappush</span></code> 함수를 살펴보겠습니다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">heappush</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+	<span class="sd">"""Push item onto heap, maintaining the heap invariant."""</span>
+	<span class="n">heap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+	<span class="n">_siftdown</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>리스트 형태인 __heap__에 __item__을 넣고 최소힙으로 정렬하는 로직(<code class="docutils literal notranslate"><span class="pre">_siftdown</span></code>)이 동작합니다.</p>
+<p>그리고 <code class="docutils literal notranslate"><span class="pre">_siftdown</span></code>의 <strong>Max Heap</strong> 버전인 <code class="docutils literal notranslate"><span class="pre">_siftdown_max</span></code>도 이미 구현되어있습니다.</p>
+<p>따라서 ___heappush_max__는 다음 코드로 손쉽게 구현할 수 있습니다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">heapq</span> <span class="kn">import</span> <span class="n">_siftdown_max</span>
+
+<span class="k">def</span> <span class="nf">_heappush_max</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+	<span class="n">heap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+	<span class="n">_siftdown_max</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>이어서 <code class="docutils literal notranslate"><span class="pre">_heappush_max</span></code>가 동작하는 전체적인 로직을 설명합니다.</p>
+<section id="siftdown-max">
+<h3 id="siftdown-max">_siftdown_max 로직 분석<a class="headerlink" href="#siftdown-max" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">_heappush_max</span></code>는 __heap__에 __item__을 push하고 <code class="docutils literal notranslate"><span class="pre">_siftdown_max</span></code> 함수를 실행합니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">_siftdown_max</span></code>는 최대힙을 정렬하는 알고리즘입니다.</p>
+<p>소스코드는 아래와 같습니다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_siftdown_max</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="n">startpos</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+	<span class="s1">'Maxheap variant of _siftdown'</span>
+	<span class="n">newitem</span> <span class="o">=</span> <span class="n">heap</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span>
+	<span class="c1"># Follow the path to the root, moving parents down until finding a place</span>
+	<span class="c1"># newitem fits.</span>
+	<span class="k">while</span> <span class="n">pos</span> <span class="o">&gt;</span> <span class="n">startpos</span><span class="p">:</span>
+		<span class="n">parentpos</span> <span class="o">=</span> <span class="p">(</span><span class="n">pos</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span>
+		<span class="n">parent</span> <span class="o">=</span> <span class="n">heap</span><span class="p">[</span><span class="n">parentpos</span><span class="p">]</span>
+		<span class="k">if</span> <span class="n">parent</span> <span class="o">&lt;</span> <span class="n">newitem</span><span class="p">:</span>
+			<span class="n">heap</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span> <span class="o">=</span> <span class="n">parent</span>
+			<span class="n">pos</span> <span class="o">=</span> <span class="n">parentpos</span>
+			<span class="k">continue</span>
+		<span class="k">break</span>
+	<span class="n">heap</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span> <span class="o">=</span> <span class="n">newitem</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>새로 추가된 인자를 <code class="docutils literal notranslate"><span class="pre">newitem</span></code>에 저장합니다. 현재 노드는 <code class="docutils literal notranslate"><span class="pre">newitem</span></code>을 가리킵니다.</p></li>
+<li><p>while문을 돌며 루프 한 번당 부모노드로 이동합니다.</p></li>
+<li><p>만약 부모 노드가 새로운 인자보다 작으면 <code class="docutils literal notranslate"><span class="pre">부모</span> <span class="pre">노드의</span> <span class="pre">값</span></code>을 <code class="docutils literal notranslate"><span class="pre">현재</span> <span class="pre">노드의</span> <span class="pre">값</span></code>에 저장합니다.</p></li>
+<li><p>그러나 부모 노드가 새로운 인자보다 크면 루프를 종료합니다.</p></li>
+<li><p>루프가 종료된 순간 현재 노드에 <code class="docutils literal notranslate"><span class="pre">newitem</span></code>을 저장합니다.</p></li>
+</ul>
+</section>
+</section>
+<section id="id2">
+<h2 id="id2">장단점<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>일반적으로 최대힙을 구현할 때 가장 많이 사용되는 방법은 인자를 반수로 치환하는 방법과</p>
+<p>또는 튜플로 치환하여 0번째 인자로 반수를 넣는 방법입니다.</p>
+<p>예시)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">heapq</span>
+
+<span class="n">max_heap</span> <span class="o">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
+
+<span class="c1"># 인자를 반수로 치환하는 방법</span>
+<span class="n">heapq</span><span class="o">.</span><span class="n">heapify</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="n">max_heap</span><span class="p">)))</span>
+<span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="o">-</span><span class="n">item</span><span class="p">,</span> <span class="n">max_heap</span><span class="p">)</span>
+<span class="n">item</span> <span class="o">=</span> <span class="o">-</span><span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">max_heap</span><span class="p">)</span>
+
+<span class="c1"># 튜플로 치환하여 0번째 인자로 반수를 넣는 방법</span>
+<span class="n">heapq</span><span class="o">.</span><span class="n">heapify</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="n">max_heap</span><span class="p">)))</span>
+<span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">((</span><span class="o">-</span><span class="n">item</span><span class="p">,</span> <span class="n">item</span><span class="p">),</span> <span class="n">max_heap</span><span class="p">)</span>
+<span class="n">item</span> <span class="o">=</span> <span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">max_heap</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>이 방법들과 비교하여 본 문서에서 설명한 방법의 장단점에 대해 설명합니다.</p>
+<section id="id3">
+<h3 id="id3">장점<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>장점을 설명하기 위해 알고리즘 문제를 예시로 들겠습니다.</p>
+<p>https://programmers.co.kr/learn/courses/30/lessons/64062?language=python3</p>
+<blockquote>
+<div><p>알고리즘의 핵심 로직은 건너뛸 수 있는 최대(k) 범위 내에서 디딤돌의 최대값이 가장 작은 구간을 찾는 것입니다.</p>
+<p>각 구간에서의 디딤돌의 최댓값을 구하기 위해 <strong>Max Heap</strong> 을 사용한 풀이를 예시로 듭니다.</p>
+</div></blockquote>
+<p>예시 답안 1 (인자를 반수로 치환하는 방법)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">stones</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="c1"># max_heap[0]: (-max_val_in_range, pos)</span>
+    <span class="n">max_heap</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="n">stones</span><span class="p">[:</span><span class="n">k</span><span class="p">]),</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">)))</span>
+    <span class="n">heapify</span><span class="p">(</span><span class="n">max_heap</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">'inf'</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">right_pos</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">stones</span><span class="p">):</span>
+        <span class="n">heappush</span><span class="p">(</span><span class="n">max_heap</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="n">val</span><span class="p">,</span> <span class="n">right_pos</span><span class="p">))</span>
+        <span class="n">left_pos</span> <span class="o">=</span> <span class="n">right_pos</span> <span class="o">-</span> <span class="n">k</span>
+        <span class="k">while</span> <span class="n">max_heap</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">left_pos</span><span class="p">:</span>
+            <span class="n">heappop</span><span class="p">(</span><span class="n">max_heap</span><span class="p">)</span>
+        <span class="k">if</span> <span class="o">-</span><span class="n">max_heap</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">result</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="o">-</span><span class="n">max_heap</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>heap에 들어가는 인자가 __반수__이기 때문에 코드를 짜면서 이를 항상 신경써야합니다.</p></li>
+<li><p>또한 최댓값을 다른 상수와 비교하는 과정에서 앞에 <code class="docutils literal notranslate"><span class="pre">-</span></code> 부호가 있기 때문에 직관적이지 못합니다.</p></li>
+</ul>
+<p>예시 답안 2 (튜플로 치환하여 0번째 인자로 반수를 넣는 방법)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">stones</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="c1"># max_heap[0][1]: (max_val_in_range, pos)</span>
+    <span class="n">max_heap</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="n">stones</span><span class="p">[:</span><span class="n">k</span><span class="p">]),</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="n">stones</span><span class="p">[:</span><span class="n">k</span><span class="p">])))</span>
+    <span class="n">heapify</span><span class="p">(</span><span class="n">max_heap</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">'inf'</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">right_pos</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">stones</span><span class="p">):</span>
+        <span class="n">heappush</span><span class="p">(</span><span class="n">max_heap</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="n">val</span><span class="p">,</span> <span class="p">(</span><span class="n">right_pos</span><span class="p">,</span> <span class="n">val</span><span class="p">)))</span>
+        <span class="n">left_pos</span> <span class="o">=</span> <span class="n">right_pos</span> <span class="o">-</span> <span class="n">k</span>
+        <span class="k">while</span> <span class="n">max_heap</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">left_pos</span><span class="p">:</span>
+            <span class="n">heappop</span><span class="p">(</span><span class="n">max_heap</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">max_heap</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">result</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">max_heap</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+<ul>
+<li><p>heap에서 인자를 추출할 때 다른 경우보다 1수준 더 접근해야하기 때문에 가독성이 떨어집니다.</p>
+<p>위의 코드들은 해결하려는 문제가 복잡해질수록 사용하기 까다로워집니다.</p>
+<p>그런 경우에는 새롭게 max_heap 함수를 구현하여 사용합시다.</p>
+</li>
+</ul>
+<p>예시 답안 3 (max_heap 함수를 구현하여 사용한 방법)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">stones</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="c1"># max_heap[0]: (max_val_in_range, pos)</span>
+    <span class="n">max_heap</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">stones</span><span class="p">[:</span><span class="n">k</span><span class="p">],</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">)))</span>
+    <span class="n">_heapify_max</span><span class="p">(</span><span class="n">max_heap</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">'inf'</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">right_pos</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">stones</span><span class="p">):</span>
+        <span class="n">_heappush_max</span><span class="p">(</span><span class="n">max_heap</span><span class="p">,</span> <span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">right_pos</span><span class="p">))</span>
+        <span class="n">left_pos</span> <span class="o">=</span> <span class="n">right_pos</span> <span class="o">-</span> <span class="n">k</span>
+        <span class="k">while</span> <span class="n">max_heap</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">left_pos</span><span class="p">:</span>
+            <span class="n">_heappop_max</span><span class="p">(</span><span class="n">max_heap</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">max_heap</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">result</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">max_heap</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3 id="id4">단점<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>함수를 사용하기 위한 선수과정이 번거롭습니다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">heapq</span> <span class="kn">import</span> <span class="n">_heapify_max</span><span class="p">,</span> <span class="n">_heappop_max</span><span class="p">,</span> <span class="n">_siftdown_max</span>
+
+<span class="k">def</span> <span class="nf">_heappush_max</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+    <span class="n">heap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="n">_siftdown_max</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> 
+</pre></div>
+</div>
+<p>함수를 사용하기 위해서는 위의 코드를 입력해야 합니다.</p>
+<p>만약 구현하고자 하는 코드가 간단하다면, 코드가 길어져 오히려 가독성을 해칠 수 있습니다.</p>
+</li>
+<li><p>공식적으로 이용하도록 지정한 함수가 아니기 때문에 프로젝트에 사용하기에 부적합합니다.</p>
+<p><em>아래는 공식적으로 이용하도록 지정한 함수 목록입니다.</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'heappush'</span><span class="p">,</span> <span class="s1">'heappop'</span><span class="p">,</span> <span class="s1">'heapify'</span><span class="p">,</span> <span class="s1">'heapreplace'</span><span class="p">,</span> <span class="s1">'merge'</span><span class="p">,</span>
+  	     <span class="s1">'nlargest'</span><span class="p">,</span> <span class="s1">'nsmallest'</span><span class="p">,</span> <span class="s1">'heappushpop'</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>사용하는 함수들이 _<strong>protected</strong> 접근 제어자를 가집니다. 버전에 민감할 수 있으며, 모든 경우에서 라이브러리의 안정성을 보장하지 않습니다.</p>
+<p>프로젝트에서 사용하기 보다는 코딩테스트에서 사용하는 것을 권장합니다.</p>
+</li>
+</ul>
+</section>
+</section>
+<section id="max-heap">
+<h2 id="max-heap">Max Heap을 이용하는 권장하는 방법<a class="headerlink" href="#max-heap" title="Permalink to this headline">¶</a></h2>
+<p><strong>MaxHeap</strong> 클래스를 만들어 사용하면 더욱 객체지향적인 코드를 만들 수 있습니다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">heapq</span>
+
+<span class="k">class</span> <span class="nc">MinHeap</span><span class="p">:</span>
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">heap</span><span class="o">=</span><span class="p">[]):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">heap</span> <span class="o">=</span> <span class="n">heapq</span><span class="o">.</span><span class="n">heapify</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">heap</span>
+
+	<span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">heap</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+	<span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">heap</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">heappush</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+		<span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">heap</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">heappop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+		<span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">heap</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">MaxHeap</span><span class="p">:</span>
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">heap</span><span class="o">=</span><span class="p">[]):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">heap</span> <span class="o">=</span> <span class="n">heapq</span><span class="o">.</span><span class="n">_heapify_max</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">heap</span>
+
+	<span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">heap</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+	<span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">heap</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">heappush</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">heap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+		<span class="n">heapq</span><span class="o">.</span><span class="n">_siftdown_max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">heap</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">heap</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">heappop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+		<span class="n">heapq</span><span class="o">.</span><span class="n">_heappop_max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">heap</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2021, Jinpyo Hong.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>
