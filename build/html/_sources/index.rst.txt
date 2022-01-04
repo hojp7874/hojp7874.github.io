@@ -12,3 +12,4 @@ Welcome to Jinpyo's Blog!
 
    python/walrus_operator
    python/max_heap
+   python/파이썬의_속도가_느린_이유

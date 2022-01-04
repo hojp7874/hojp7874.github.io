@@ -1,0 +1,417 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>파이썬의 속도가 느린 이유 &#8212; Jinpyo&#39;s Blog  documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="heapq로 최대힙 사용하기" href="max_heap.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Jinpyo's Blog  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="문서 검색 ..." aria-label="문서 검색 ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Python:
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="walrus_operator.html">
+   왈러스 연산자
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="max_heap.html">
+   heapq로 최대힙 사용하기
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   파이썬의 속도가 느린 이유
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="탐색 전환" aria-controls="site-navigation"
+                title="탐색 전환" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="이 페이지 다운로드"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/python/파이썬의_속도가_느린_이유.md.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="소스 파일 다운로드" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="PDF로 인쇄"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="전체 화면으로보기"
+        title="전체 화면으로보기"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> 내용
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   파이썬 파일이 실행되는 과정
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     파이썬 컴파일?
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#import">
+       import 최적화
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id4">
+       네이밍 양식
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bytecode">
+       Bytecode의 형태
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pvm-python-virtual-machine">
+     PVM(Python Virtual Machine)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c-java">
+   C, JAVA와의 비교
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c">
+     C
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#java">
+     JAVA
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#jit-just-in-time-compilation">
+       JIT(Just-In-Time Compilation)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pypy">
+       PyPy
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
+<h1>파이썬의 속도가 느린 이유<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>파이썬은 타 언어에 비해 속도가 느리다고 알려져 있으며, 이는 대체로 맞습니다.</p>
+<p>본 문서에서는 파이썬이 어떻게 동작하는지에 대한 내부 로직에 대해 설명합니다.</p>
+<p>C, JAVA와 비교하여 파이썬의 속도가 상대적으로 느린 이유를 분석합니다.</p>
+</div></blockquote>
+<div class="section" id="id2">
+<h2>파이썬 파일이 실행되는 과정<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>파이썬을 사용하는 방법은 간단합니다.</p>
+<ol class="arabic simple">
+<li><p>먼저 파이썬 인터프리터를 설치하고</p></li>
+<li><p>파이썬 파일(<code class="docutils literal notranslate"><span class="pre">.py</span></code>)을 생성한 후</p></li>
+<li><p>파이썬 인터프리터로 이를 실행합니다.</p></li>
+</ol>
+<p>이렇게 간단한 이유는 파이썬 인터프리터가 캡슐화가 잘 되어있어서 복잡한 내부 로직을 알아야 할 수고를 덜기 때문입니다.</p>
+<p>조금 더 자세히 살펴보겠습니다.</p>
+<ol class="arabic simple">
+<li><p>파이썬 인터프리터를 설치하고</p></li>
+<li><p>파이썬 파일(<code class="docutils literal notranslate"><span class="pre">.py</span></code>)을 생성한 후</p></li>
+<li><p>파이썬 인터프리터를 이용해 이를 PVM이 인식할 수 있는 <code class="docutils literal notranslate"><span class="pre">bytecode</span></code>로 컴파일 하고</p></li>
+<li><p>PMV에서 루프를 돌면서 변환된 <code class="docutils literal notranslate"><span class="pre">bytecode</span></code>를 한 줄씩 CPU가 인식할 수 있는 <code class="docutils literal notranslate"><span class="pre">binarycode</span></code>로 변환하고</p></li>
+<li><p>CPU가 해당 명령을 처리하도록 합니다.</p></li>
+</ol>
+<div class="section" id="id3">
+<h3>파이썬 컴파일?<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>C를 비롯한 프로그래밍 언어에서 의미하는 <strong>컴파일</strong> 은 CPU가 읽을 수 있는 <code class="docutils literal notranslate"><span class="pre">binarycode</span></code>로 변환하는 것을 의미하지만, 여기에서 설명하는 컴파일은 PVM에서 해석할 수 있는 <code class="docutils literal notranslate"><span class="pre">bytecode</span></code>로 변환하는 것을 의미합니다.</p>
+<p>유사하게, JAVA에서 일반적으로 말하는 컴파일도 같은 개념입니다.</p>
+<p>파이썬 파일 <code class="docutils literal notranslate"><span class="pre">.py</span></code>은 실행 시 <code class="docutils literal notranslate"><span class="pre">.pyc</span></code>로 컴파일 됩니다.</p>
+<div class="section" id="import">
+<h4>import 최적화<a class="headerlink" href="#import" title="Permalink to this headline">¶</a></h4>
+<p>생성된 <code class="docutils literal notranslate"><span class="pre">.pyc</span></code> 파일은 메인 스크립트의 경우 메모리에 저장되었다가 휘발되지만, <strong>import</strong> 한 모듈은 컴퓨터에 저장됩니다.</p>
+<p>즉, import한 모듈을 <code class="docutils literal notranslate"><span class="pre">bytecode</span></code> 형태로 캐싱 해두는 것으로 생각할 수 있습니다.</p>
+<p>예를 들어 아래와 같은 파일 구조에서,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>root
+├─script.py
+└─imptest.py
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># script.py</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;This is script.py&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># imptest.py</span>
+<span class="kn">import</span> <span class="nn">script</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;This is imptest.py&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">script.py</span></code>를 실행하면 <code class="docutils literal notranslate"><span class="pre">bytecode</span></code>가 저장되지 않지만,</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>root&gt; python3 script.py
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>root
+├─script.py
+└─imptest.py
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">imptest.py</span></code>를 실행하면 <strong>import</strong> 한 script.py의 <code class="docutils literal notranslate"><span class="pre">bytecode</span></code>가 저장됩니다.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>root&gt; python3 imptest.py
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>root
+├─__pycache__
+│      └─script.cpython-38.pyc
+├─script.py
+└─imptest.py
+</pre></div>
+</div>
+<p>만약 모듈을 또다시 불러오는 경우 <code class="docutils literal notranslate"><span class="pre">bytecode</span></code>로의 변환 과정이 생략되어 <strong>import</strong> 속도가 향상됩니다.</p>
+<p>또한 이는 스크립트 실행시 파일 변경일자를 소스코드와 비교해서 최신 상태를 유지합니다.</p>
+</div>
+<div class="section" id="id4">
+<h4>네이밍 양식<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<p>python 2와 3는 <code class="docutils literal notranslate"><span class="pre">bytecode</span></code>가 저장되는 위치와 이름이 다릅니다.</p>
+<p>python2에서는 동일 이름에 확장자만 바뀐 형태 (script.py -&gt; script.pyc)로 동일 폴더에 저장되고,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>root
+├─script.py
+├─script.pyc
+└─imptest.py
+</pre></div>
+</div>
+<p>python3에서는 해당 버전이 포함된 형태 (script.py -&gt; script.cpython-38.pyc)로 <code class="docutils literal notranslate"><span class="pre">__pycache__</span></code>라는 폴더 안에 저장됩니다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>root
+├─__pycache__
+│      └─script.cpython-38.pyc
+├─script.py
+└─imptest.py
+</pre></div>
+</div>
+</div>
+<div class="section" id="bytecode">
+<h4>Bytecode의 형태<a class="headerlink" href="#bytecode" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">bytecode</span></code>의 형태는 파이썬 표준 라이브러리인 <code class="docutils literal notranslate"><span class="pre">dis</span></code>를 사용해 확인할 수 있습니다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">myfunc</span><span class="p">(</span><span class="n">alist</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dis</span><span class="o">.</span><span class="n">dis</span><span class="p">(</span><span class="n">myfunc</span><span class="p">)</span>
+<span class="go">  2           0 LOAD_GLOBAL              0 (len)</span>
+<span class="go">              2 LOAD_FAST                0 (alist)</span>
+<span class="go">              4 CALL_FUNCTION            1</span>
+<span class="go">              6 RETURN_VALUE</span>
+</pre></div>
+</div>
+<p>각 행의 의미에 대해서는 본 문서에서 다루지 않겠습니다.</p>
+</div>
+</div>
+<div class="section" id="pvm-python-virtual-machine">
+<h3>PVM(Python Virtual Machine)<a class="headerlink" href="#pvm-python-virtual-machine" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">bytecode</span></code>는 여전히 CPU가 읽을 수 없기 때문에 이를 <code class="docutils literal notranslate"><span class="pre">binarycode</span></code>로 변환해주어야 합니다.</p>
+<p>파이썬에서는 이와같은 과정이 PVM 내에서 일어납니다.</p>
+<p>PVM은 사실 독립된 프로그램이 아니고 그저 <code class="docutils literal notranslate"><span class="pre">bytecode</span></code>의 명령이 처리되는 가상환경일 뿐입니다.</p>
+<p>PVM에서 <code class="docutils literal notranslate"><span class="pre">bytecode</span></code>는 루프를 돌며 한 줄씩 해석되어 CPU가 처리하게 됩니다. 이로써 파이썬 스크립트 실행이 완료됩니다.</p>
+<p>추가로 OS에 독립적인 <code class="docutils literal notranslate"><span class="pre">bytecode</span></code>와는 달리 <code class="docutils literal notranslate"><span class="pre">binarycode</span></code>는 OS에 종속적이기 때문에 PVM 또한 OS마다 다릅니다.</p>
+</div>
+</div>
+<div class="section" id="c-java">
+<h2>C, JAVA와의 비교<a class="headerlink" href="#c-java" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="c">
+<h3>C<a class="headerlink" href="#c" title="Permalink to this headline">¶</a></h3>
+<p>C에서는 <strong>진짜컴파일</strong> 이루어집니다.</p>
+<p>즉, <code class="docutils literal notranslate"><span class="pre">sourcecode</span></code>가 CPU가 해석할 수 있는 <code class="docutils literal notranslate"><span class="pre">binarycode</span></code>로 변환되어 저장되고, 이를 실행하기만 하면 됩니다.</p>
+<p>따라서 파이썬에서 이루어졌던 과정들 (<code class="docutils literal notranslate"><span class="pre">sourcecode</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">bytecode</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">binarycode</span></code>)이 생략되기 때문에 빠를 수 밖에 없습니다.</p>
+</div>
+<div class="section" id="java">
+<h3>JAVA<a class="headerlink" href="#java" title="Permalink to this headline">¶</a></h3>
+<p>JAVA는 Python과 실행 과정이 유사합니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">sourcecode</span></code>가 <code class="docutils literal notranslate"><span class="pre">bytecode</span></code>로 컴파일되고, JVM에서 <code class="docutils literal notranslate"><span class="pre">bytecode</span></code>를 CPU가 해석할 수 있는 <code class="docutils literal notranslate"><span class="pre">binarycode</span></code>로 변환되어 실행됩니다.</p>
+<p>단, JAVA는 JIT를 이용하여 실행 속도를 향상시켰습니다.</p>
+<div class="section" id="jit-just-in-time-compilation">
+<h4>JIT(Just-In-Time Compilation)<a class="headerlink" href="#jit-just-in-time-compilation" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">bytecode</span></code>를 <code class="docutils literal notranslate"><span class="pre">binarycode</span></code>로 컴파일 할 때, 동일한 코드를 반복해서 해석하는 경우가 있습니다.</p>
+<p>JIT는 이를 캐싱하여 실행속도를 향상시킵니다.</p>
+<p>따라서 반복적인 컴파일이 많이 이루어질 수록 성능이 좋아집니다.</p>
+</div>
+<div class="section" id="pypy">
+<h4>PyPy<a class="headerlink" href="#pypy" title="Permalink to this headline">¶</a></h4>
+<p>JIT 컴파일러가 다양한 인터프리터 언어에 적용될 때 공식 파이썬에서는 적용되지 않았습니다.</p>
+<p>그러나 몇몇 파이썬 사용자들이 JIT를 적용한 파이썬을 새롭게 만들었고, 그 결과가 PyPy입니다.</p>
+<p>CPython에 비해 약 5.7배 정도 빠르다고 알려져 있습니다.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="max_heap.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">heapq로 최대힙 사용하기</p>
+        </div>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          으로 Jinpyo Hong<br/>
+        
+            &copy; 저작권 2021, Jinpyo Hong.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

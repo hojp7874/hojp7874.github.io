@@ -1,0 +1,179 @@
+# 파이썬의 속도가 느린 이유
+
+> 파이썬은 타 언어에 비해 속도가 느리다고 알려져 있으며, 이는 대체로 맞습니다.
+>
+> 본 문서에서는 파이썬이 어떻게 동작하는지에 대한 내부 로직에 대해 설명합니다.
+>
+> C, JAVA와 비교하여 파이썬의 속도가 상대적으로 느린 이유를 분석합니다.
+
+## 파이썬 파일이 실행되는 과정
+
+파이썬을 사용하는 방법은 간단합니다.
+
+1. 먼저 파이썬 인터프리터를 설치하고
+2. 파이썬 파일(`.py`)을 생성한 후
+3. 파이썬 인터프리터로 이를 실행합니다.
+
+이렇게 간단한 이유는 파이썬 인터프리터가 캡슐화가 잘 되어있어서 복잡한 내부 로직을 알아야 할 수고를 덜기 때문입니다.
+
+조금 더 자세히 살펴보겠습니다.
+
+1. 파이썬 인터프리터를 설치하고
+2. 파이썬 파일(`.py`)을 생성한 후
+3. 파이썬 인터프리터를 이용해 이를 PVM이 인식할 수 있는 `bytecode`로 컴파일 하고
+4. PMV에서 루프를 돌면서 변환된 `bytecode`를 한 줄씩 CPU가 인식할 수 있는 `binarycode`로 변환하고
+5. CPU가 해당 명령을 처리하도록 합니다.
+
+### 파이썬 컴파일?
+
+C를 비롯한 프로그래밍 언어에서 의미하는 __컴파일__ 은 CPU가 읽을 수 있는 `binarycode`로 변환하는 것을 의미하지만, 여기에서 설명하는 컴파일은 PVM에서 해석할 수 있는 `bytecode`로 변환하는 것을 의미합니다.
+
+유사하게, JAVA에서 일반적으로 말하는 컴파일도 같은 개념입니다.
+
+파이썬 파일 `.py`은 실행 시 `.pyc`로 컴파일 됩니다.
+
+#### import 최적화
+
+생성된 `.pyc` 파일은 메인 스크립트의 경우 메모리에 저장되었다가 휘발되지만, __import__ 한 모듈은 컴퓨터에 저장됩니다.
+
+즉, import한 모듈을 `bytecode` 형태로 캐싱 해두는 것으로 생각할 수 있습니다.
+
+예를 들어 아래와 같은 파일 구조에서,
+
+```
+root
+├─script.py
+└─imptest.py
+```
+
+```python
+# script.py
+a = [1, 2, 3, 4, 5]
+print('This is script.py')
+```
+
+```python
+# imptest.py
+import script
+
+print('This is imptest.py')
+```
+
+`script.py`를 실행하면 `bytecode`가 저장되지 않지만,
+
+```bash
+root> python3 script.py
+```
+
+```
+root
+├─script.py
+└─imptest.py
+```
+
+`imptest.py`를 실행하면 __import__ 한 script.py의 `bytecode`가 저장됩니다.
+
+```shell
+root> python3 imptest.py
+```
+
+```
+root
+├─__pycache__
+│      └─script.cpython-38.pyc
+├─script.py
+└─imptest.py
+```
+
+만약 모듈을 또다시 불러오는 경우 `bytecode`로의 변환 과정이 생략되어 __import__ 속도가 향상됩니다.
+
+또한 이는 스크립트 실행시 파일 변경일자를 소스코드와 비교해서 최신 상태를 유지합니다.
+
+#### 네이밍 양식
+
+python 2와 3는 `bytecode`가 저장되는 위치와 이름이 다릅니다.
+
+python2에서는 동일 이름에 확장자만 바뀐 형태 (script.py -> script.pyc)로 동일 폴더에 저장되고,
+
+```
+root
+├─script.py
+├─script.pyc
+└─imptest.py
+```
+
+python3에서는 해당 버전이 포함된 형태 (script.py -> script.cpython-38.pyc)로 `__pycache__`라는 폴더 안에 저장됩니다.
+
+```
+root
+├─__pycache__
+│      └─script.cpython-38.pyc
+├─script.py
+└─imptest.py
+```
+
+#### Bytecode의 형태
+
+`bytecode`의 형태는 파이썬 표준 라이브러리인 `dis`를 사용해 확인할 수 있습니다.
+
+```python
+>>> def myfunc(alist):
+...     return len(alist)
+...
+>>> dis.dis(myfunc)
+  2           0 LOAD_GLOBAL              0 (len)
+              2 LOAD_FAST                0 (alist)
+              4 CALL_FUNCTION            1
+              6 RETURN_VALUE
+```
+
+각 행의 의미에 대해서는 본 문서에서 다루지 않겠습니다.
+
+### PVM(Python Virtual Machine)
+
+`bytecode`는 여전히 CPU가 읽을 수 없기 때문에 이를 `binarycode`로 변환해주어야 합니다.
+
+파이썬에서는 이와같은 과정이 PVM 내에서 일어납니다.
+
+PVM은 사실 독립된 프로그램이 아니고 그저 `bytecode`의 명령이 처리되는 가상환경일 뿐입니다.
+
+PVM에서 `bytecode`는 루프를 돌며 한 줄씩 해석되어 CPU가 처리하게 됩니다. 이로써 파이썬 스크립트 실행이 완료됩니다.
+
+추가로 OS에 독립적인 `bytecode`와는 달리 `binarycode`는 OS에 종속적이기 때문에 PVM 또한 OS마다 다릅니다.
+
+
+
+## C, JAVA와의 비교
+
+### C
+
+C에서는 __진짜컴파일__ 이루어집니다.
+
+즉, `sourcecode`가 CPU가 해석할 수 있는 `binarycode`로 변환되어 저장되고, 이를 실행하기만 하면 됩니다.
+
+따라서 파이썬에서 이루어졌던 과정들 (`sourcecode` -> `bytecode` -> `binarycode`)이 생략되기 때문에 빠를 수 밖에 없습니다.
+
+### JAVA
+
+JAVA는 Python과 실행 과정이 유사합니다.
+
+`sourcecode`가 `bytecode`로 컴파일되고, JVM에서 `bytecode`를 CPU가 해석할 수 있는 `binarycode`로 변환되어 실행됩니다.
+
+단, JAVA는 JIT를 이용하여 실행 속도를 향상시켰습니다.
+
+#### JIT(Just-In-Time Compilation)
+
+`bytecode`를 `binarycode`로 컴파일 할 때, 동일한 코드를 반복해서 해석하는 경우가 있습니다.
+
+JIT는 이를 캐싱하여 실행속도를 향상시킵니다.
+
+따라서 반복적인 컴파일이 많이 이루어질 수록 성능이 좋아집니다.
+
+#### PyPy
+
+JIT 컴파일러가 다양한 인터프리터 언어에 적용될 때 공식 파이썬에서는 적용되지 않았습니다.
+
+그러나 몇몇 파이썬 사용자들이 JIT를 적용한 파이썬을 새롭게 만들었고, 그 결과가 PyPy입니다.
+
+CPython에 비해 약 5.7배 정도 빠르다고 알려져 있습니다.
+
