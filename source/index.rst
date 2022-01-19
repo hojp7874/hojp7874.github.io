@@ -13,3 +13,9 @@ Welcome to Jinpyo's Blog!
    python/walrus_operator
    python/max_heap
    python/파이썬의_속도가_느린_이유
+   
+.. toctree::
+   :maxdepth: 1
+   :caption: Project:
+
+   project/movie_review/movie_review_refectoring1
